@@ -92,13 +92,13 @@ export default function Home() {
       // 2. Central Ritual Word Reveals
       // Starts halfway through the departure
       tl.fromTo('.hero-center-ritual', 
-        { scale: 0.8, opacity: 0, y: 50 },
-        { scale: 1, opacity: 0.2, y: 0, duration: 0.5, ease: 'power1.out' },
-        0.5 // Start at 50% of the timeline
+        { scale: 0.95, opacity: 0, y: 30 },
+        { scale: 1, opacity: 0.7, y: 0, duration: 0.7, ease: 'power2.out' },
+        0.5
       )
       
       // 3. Fade out the Ritual word just before unpinning
-      tl.to('.hero-center-ritual', { opacity: 0, scale: 1.1, duration: 0.2 }, 0.8)
+      tl.to('.hero-center-ritual', { opacity: 0, y: -20, duration: 0.4 }, 0.95)
 
       gsap.to(boxRef.current, {
         rotate: 360,
@@ -138,9 +138,13 @@ export default function Home() {
         extension="webp" 
       >
         <section className="relative h-full flex items-center px-frame pointer-events-none">
-          {/* Central Ritual Word (Top Section - Massive & Subtle) */}
-          <div className="hero-center-ritual absolute inset-0 flex items-start justify-center pointer-events-none opacity-0 z-0 pt-6">
-            <h2 className="text-[19vw] font-serif font-bold tracking-[0.2em] select-none leading-none bg-gradient-to-b from-gold to-black bg-clip-text text-transparent">
+          {/* Central Ritual Word (Absolute Top Center) */}
+          <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-12 pointer-events-none opacity-0 z-0">
+            <h2 className="text-[18vw] leading-none font-serif font-bold tracking-[0.15em] select-none text-transparent bg-clip-text"
+                style={{ 
+                  backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.6) 0%, rgba(201, 162, 39, 0) 100%)',
+                  filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.3))'
+                }}>
               ORIGEN
             </h2>
           </div>
