@@ -28,12 +28,12 @@ export default function Home() {
         opacity: 0,
         y: 100,
         duration: 1,
-        stagger: 0.2,
+        stagger: 0.1,
         scrollTrigger: {
           trigger: '.reveal-container',
-          start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+          start: 'top 90%',
+          end: 'top 20%',
+          scrub: 1, // Follows scroll with inertia
         },
       })
     }, containerRef)

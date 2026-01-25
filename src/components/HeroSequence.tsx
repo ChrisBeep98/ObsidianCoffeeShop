@@ -104,7 +104,7 @@ export default function HeroSequence({ frameCount, baseUrl, extension }: HeroSeq
         trigger: containerRef.current,
         start: 'top top',
         end: '+=400%',
-        scrub: 0.1, // Very low scrub for maximum responsiveness with smooth feel
+        scrub: 1.5, // Increased from 0.1 for that "inertia" feel
         pin: true,
         anticipatePin: 1,
       },
