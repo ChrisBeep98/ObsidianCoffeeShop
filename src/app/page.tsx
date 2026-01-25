@@ -35,7 +35,7 @@ export default function Home() {
         gsap.to(scrollProxy, {
           y: targetY,
           duration: 0.7,
-          ease: 'power2.out',
+          ease: 'power3.out',
           overwrite: 'auto',
           onUpdate: () => window.scrollTo(0, scrollProxy.y)
         })
