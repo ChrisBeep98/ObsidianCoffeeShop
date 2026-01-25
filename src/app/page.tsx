@@ -140,8 +140,8 @@ export default function Home() {
         <section className="relative h-full flex items-center px-frame pointer-events-none">
           {/* Central Ritual Word (Top Section - Massive & Subtle) */}
           <div className="hero-center-ritual absolute inset-0 flex items-start justify-center pointer-events-none opacity-0 z-0 pt-6">
-            <h2 className="text-[18vw] font-serif font-bold text-gold tracking-[0.2em] select-none leading-none">
-              RITUAL
+            <h2 className="text-[19vw] font-serif font-bold tracking-[0.2em] select-none leading-none bg-gradient-to-b from-gold to-black bg-clip-text text-transparent">
+              ORIGEN
             </h2>
           </div>
 
