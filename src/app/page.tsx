@@ -90,24 +90,24 @@ export default function Home() {
       tl.to('.hero-right', { x: '120%', opacity: 0, ease: 'power2.in' }, 0)
       
       // 2. Central Ritual Word Reveals
-      // Starts halfway through the departure
+      // Starts at 64% as requested
       tl.fromTo('.hero-center-ritual', 
         { scale: 0.95, opacity: 0, y: 30 },
         { scale: 1, opacity: 0.5, y: 0, duration: 0.7, ease: 'power2.out' },
-        0.5
+        0.64
       )
       
       tl.fromTo('.hero-subtitle',
         { opacity: 0, x: 50 },
         { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out' },
-        0.6 // Slight delay after ORIGEN starts
+        0.7 // Slightly staggered after ORIGEN starts at 64%
       )
       
       // HUD Reveal
       tl.fromTo('.hero-center-hud',
         { opacity: 0, scale: 0.8 },
         { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
-        0.7
+        0.75
       )
       
       // 3. Fade out the Ritual word just before unpinning
