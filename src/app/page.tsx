@@ -93,12 +93,27 @@ export default function Home() {
       // Starts halfway through the departure
       tl.fromTo('.hero-center-ritual', 
         { scale: 0.95, opacity: 0, y: 30 },
-        { scale: 1, opacity: 0.7, y: 0, duration: 0.7, ease: 'power2.out' },
+        { scale: 1, opacity: 0.5, y: 0, duration: 0.7, ease: 'power2.out' },
         0.5
+      )
+      
+      tl.fromTo('.hero-subtitle',
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out' },
+        0.6 // Slight delay after ORIGEN starts
+      )
+      
+      // HUD Reveal
+      tl.fromTo('.hero-center-hud',
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
+        0.7
       )
       
       // 3. Fade out the Ritual word just before unpinning
       tl.to('.hero-center-ritual', { opacity: 0, y: -20, duration: 0.4 }, 0.95)
+      tl.to('.hero-subtitle', { opacity: 0, y: -20, duration: 0.4 }, 0.95)
+      tl.to('.hero-center-hud', { opacity: 0, scale: 1.1, duration: 0.4 }, 0.95)
 
       gsap.to(boxRef.current, {
         rotate: 360,
@@ -142,11 +157,40 @@ export default function Home() {
           <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-12 pointer-events-none opacity-0 z-0">
             <h2 className="text-[18vw] leading-none font-serif font-bold tracking-[0.15em] select-none text-transparent bg-clip-text"
                 style={{ 
-                  backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.6) 0%, rgba(201, 162, 39, 0) 100%)',
-                  filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.3))'
+                  backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0) 100%)',
+                  filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.2))'
                 }}>
               ORIGEN
             </h2>
+          </div>
+
+          {/* Floating Chip Marker (Left, Shadowed) */}
+          <div className="hero-center-hud absolute top-[48%] left-[25%] flex items-center pointer-events-none opacity-0 z-0">
+            {/* The Chip */}
+            <div className="bg-bone/5  border border-bone/10 px-3 py-1.5 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-2">
+              <div className="w-1 h- bg-bone/40 rounded-full"></div>
+              <span className="font-sans text-[10px] text-bone tracking-[0.2em] font-light lowercase">
+                pureza de grano
+              </span>
+            </div>
+            
+            {/* The Pointing Line */}
+            <div className="w-16 h-[1px] bg-gradient-to-r from-bone/20 to-gold/40"></div>
+            
+            {/* The Target Dot */}
+            <div className="w-1.5 h-1.5 bg-gold/80 rounded-full"></div>
+          </div>
+
+          {/* Subtitle Message (Columns 8-12, Bottom Right) */}
+          <div className="hero-subtitle absolute bottom-20 md:bottom-32 w-full px-frame pointer-events-none opacity-0 z-0">
+            <div className="grid grid-cols-12 w-full">
+              <div className="col-span-12 md:col-start-7 md:col-span-6 text-left">
+                 <h3 className="font-sans text-6xl md:text-8xl lg:text-[9rem] font-bold lowercase tracking-tighter text-bone leading-[0.8]"
+                     style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}>
+                   la alquimia <br/> <span className="text-gold tracking-widest text-4xl md:text-6xl lg:text-7xl block mt-4">de lo eterno</span>
+                 </h3>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-12 w-full relative z-10">
