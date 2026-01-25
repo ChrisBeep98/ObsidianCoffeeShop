@@ -113,18 +113,6 @@ export default function HeroSequence({ frameCount, baseUrl, extension, children 
       onUpdate: render,
     })
 
-    // Animation for children (the title) to fade out at the end of the sequence
-    gsap.to('.hero-child-content', {
-      opacity: 0,
-      y: -50,
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: '60% top',
-        end: '95% top',
-        scrub: true,
-      }
-    })
-
     render()
 
     return () => {

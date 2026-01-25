@@ -74,6 +74,32 @@ export default function Home() {
         })
       })
 
+      // HERO TRANSITION TIMELINE
+      // Synchronized with the 400% scroll distance of the HeroSequence
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: 'body', // We trigger from top
+          start: 'top top',
+          end: '+=400%', // Matches the HeroSequence pin duration
+          scrub: 1,
+        }
+      })
+
+      // 1. Texts depart to sides
+      tl.to('.hero-left', { x: '-120%', opacity: 0, ease: 'power2.in' }, 0)
+      tl.to('.hero-right', { x: '120%', opacity: 0, ease: 'power2.in' }, 0)
+      
+      // 2. Central Ritual Word Reveals
+      // Starts halfway through the departure
+      tl.fromTo('.hero-center-ritual', 
+        { scale: 0.8, opacity: 0, y: 50 },
+        { scale: 1, opacity: 0.2, y: 0, duration: 0.5, ease: 'power1.out' },
+        0.5 // Start at 50% of the timeline
+      )
+      
+      // 3. Fade out the Ritual word just before unpinning
+      tl.to('.hero-center-ritual', { opacity: 0, scale: 1.1, duration: 0.2 }, 0.8)
+
       gsap.to(boxRef.current, {
         rotate: 360,
         duration: 2,
@@ -112,9 +138,16 @@ export default function Home() {
         extension="webp" 
       >
         <section className="relative h-full flex items-center px-frame pointer-events-none">
-          <div className="grid grid-cols-12 w-full">
+          {/* Central Ritual Word (Top Section - Massive & Subtle) */}
+          <div className="hero-center-ritual absolute inset-0 flex items-start justify-center pointer-events-none opacity-0 z-0 pt-6">
+            <h2 className="text-[18vw] font-serif font-bold text-gold tracking-[0.2em] select-none leading-none">
+              RITUAL
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-12 w-full relative z-10">
             {/* Title Section (Up) */}
-            <div className="col-span-12 md:col-span-10 md:-mt-32">
+            <div className="hero-left col-span-12 md:col-span-10 md:-mt-32 will-change-transform">
               <h1 className="flex flex-col gap-0">
                 <span className="text-hero font-medium text-bone">
                   El Secreto
@@ -126,9 +159,9 @@ export default function Home() {
             </div>
 
             {/* Paragraph Section (Column 9 to 11, Align Left) */}
-            <div className="col-span-12 md:col-start-9 md:col-span-3 text-left self-end md:mb-[-120px] flex flex-col gap-8">
+            <div className="hero-right col-span-12 md:col-start-9 md:col-span-3 text-left self-end md:mb-[-120px] flex flex-col gap-8 will-change-transform">
               <div className="flex flex-col gap-2">
-                <span className="text-label block opacity-80">
+                <span className="font-sans text-xs font-bold tracking-[0.2em] uppercase text-cherry block opacity-100">
                   // Notas de Origen
                 </span>
                 <p className="text-body lowercase opacity-70 border-l border-gold/30 pl-4">

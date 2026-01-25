@@ -6,6 +6,7 @@
   --color-gold: #C9A227;
   --color-bone: #F5F5F0;
   --color-muted: #525252;
+  --color-cherry: #A33327;
 }
 
 @theme inline {
@@ -14,6 +15,7 @@
   --color-gold: var(--color-gold);
   --color-bone: var(--color-bone);
   --color-muted: var(--color-muted);
+  --color-cherry: var(--color-cherry);
   
   --font-serif: var(--font-serif);
   --font-urbanist: var(--font-sans);
