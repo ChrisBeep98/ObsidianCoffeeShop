@@ -16,6 +16,37 @@ export default function Home() {
     ScrollTrigger.normalizeScroll(true)
     ScrollTrigger.config({ limitCallbacks: true })
 
+    // Custom Keyboard Smoother (Version 1)
+    const scrollProxy = { y: window.scrollY }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isSpace = e.key === ' ' || e.key === 'Space'
+      const isUp = e.key === 'ArrowUp' || e.key === 'PageUp'
+      const isDown = e.key === 'ArrowDown' || e.key === 'PageDown' || isSpace
+
+      if (isUp || isDown) {
+        e.preventDefault()
+        const scrollStep = (e.key.includes('Page') || isSpace) ? window.innerHeight * 0.8 : 150
+        
+        scrollProxy.y = window.scrollY
+        const targetY = isDown 
+          ? window.scrollY + scrollStep 
+          : window.scrollY - scrollStep
+
+        gsap.to(scrollProxy, {
+          y: targetY,
+          duration: 0.7,
+          ease: 'power2.out',
+          overwrite: 'auto',
+          onUpdate: () => window.scrollTo(0, scrollProxy.y)
+        })
+      }
+    }
+
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    if (!isMobile) {
+      window.addEventListener('keydown', handleKeyDown, { passive: false })
+    }
+
     const ctx = gsap.context(() => {
       gsap.to(boxRef.current, {
         rotate: 360,
