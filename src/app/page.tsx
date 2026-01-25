@@ -122,17 +122,22 @@ export default function Home() {
         ease: 'none',
       })
 
-      gsap.from('.reveal-text', {
-        opacity: 0,
-        y: 100,
-        duration: 1,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: '.reveal-container',
-          start: 'top 90%',
-          end: 'top 20%',
-          scrub: 1,
-        },
+      // Improved Reveal Animation for Editorial Sections
+      const revealContainers = document.querySelectorAll('.reveal-container')
+      revealContainers.forEach((container) => {
+        const texts = container.querySelectorAll('.reveal-text')
+        
+        ScrollTrigger.create({
+          trigger: container,
+          start: 'top 80%',
+          onEnter: () => {
+            texts.forEach((text, i) => {
+              gsap.delayedCall(i * 0.15, () => {
+                text.classList.add('active')
+              })
+            })
+          }
+        })
       })
     }, containerRef)
 
@@ -164,21 +169,24 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Floating Chip Marker (Left, Shadowed) */}
-          <div className="hero-center-hud absolute top-[48%] left-[25%] flex items-center pointer-events-none opacity-0 z-0">
+          {/* Floating Chip Marker (Left, Maximum Contrast) */}
+          <div className="hero-center-hud absolute top-[48%] left-[15%] flex items-center pointer-events-none opacity-0 z-0">
             {/* The Chip */}
-            <div className="bg-bone/5  border border-bone/10 px-3 py-1.5 backdrop-blur-md shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-center gap-2">
-              <div className="w-1 h- bg-bone/40 rounded-full"></div>
-              <span className="font-sans text-[10px] text-bone tracking-[0.2em] font-light lowercase">
-                pureza de grano
+            <div className="bg-[#0A0A0A] border border-gold/40 px-5 py-2.5 flex items-center gap-3 shadow-[0_20px_50px_rgba(0,0,0,1)] relative overflow-hidden">
+              {/* Left Accent Bar */}
+              <div className="absolute left-0 top-0 h-full w-[2px] bg-gold"></div>
+              
+              <div className="w-2 h-2 bg-gold rounded-full animate-pulse shadow-[0_0_12px_rgba(201,162,39,0.9)]"></div>
+              <span className="font-serif text-[13px] text-white tracking-[0.1em] italic first-letter:capitalize">
+                Pureza de grano
               </span>
             </div>
             
             {/* The Pointing Line */}
-            <div className="w-16 h-[1px] bg-gradient-to-r from-bone/20 to-gold/40"></div>
+            <div className="w-24 h-[1px] bg-gold/50 shadow-[0_0_8px_rgba(201,162,39,0.4)]"></div>
             
             {/* The Target Dot */}
-            <div className="w-1.5 h-1.5 bg-gold/80 rounded-full"></div>
+            <div className="w-2.5 h-2.5 bg-gold rounded-full shadow-[0_0_20px_rgba(201,162,39,1)]"></div>
           </div>
 
           {/* Subtitle Message (Columns 8-12, Bottom Right) */}
@@ -239,24 +247,38 @@ export default function Home() {
 
       {/* Content Sections */}
       <div className="relative z-20 bg-void">
-        <section className="min-h-screen flex items-center justify-center px-frame py-section reveal-container">
-          <div className="max-w-2xl text-center">
-            <h2 className="reveal-text text-title mb-6">La Alquimia de lo Puro</h2>
-            <p className="reveal-text text-body">
-              Cada experiencia de alta gama debe tener un arco narrativo. Participamos en un ritual antiguo donde la precisión se encuentra con el misterio de la tierra.
-            </p>
+        <section className="min-h-screen px-frame py-section reveal-container">
+          <div className="grid grid-cols-12 w-full gap-y-20">
+            {/* Philosophical Header */}
+            <div className="col-span-12 md:col-span-6">
+              <span className="text-label mb-8 block">// El Manifiesto</span>
+              <h2 className="reveal-text text-hero text-6xl md:text-8xl lg:text-9xl leading-none">
+                La Alquimia <br/> <span className="text-gold">de lo Puro</span>
+              </h2>
+            </div>
+
+            {/* Narrative Paragraph (Asymmetrical Placement) */}
+            <div className="col-span-12 md:col-start-7 md:col-span-5 self-end">
+              <p className="reveal-text text-body border-l border-gold/20 pl-8">
+                Cada experiencia de alta gama debe tener un arco narrativo. Participamos en un ritual antiguo donde la precisión se encuentra con el misterio de la tierra. No es solo café; es una transición de estado, un momento donde el tiempo se detiene para revelar la esencia del grano.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="px-frame py-section bg-charcoal/30">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-7xl mx-auto">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="reveal-text p-10 bg-charcoal border border-bone/5 hover:border-gold/20 transition-colors duration-500">
-                <span className="text-label mb-6 block opacity-60">Rito. 0{i}</span>
-                <h3 className="text-title text-2xl mb-6">El Proceso</h3>
-                <p className="text-body text-sm opacity-60">
-                  Desde la selección manual del grano hasta el tostado preciso que libera el alma de la cosecha en cada taza.
+        {/* Features Section (The Ledger) */}
+        <section className="px-frame py-section bg-charcoal/20 reveal-container">
+          <div className="flex flex-col gap-0 border-t border-bone/10">
+            {[
+              { id: 'I', title: 'Selección de Altura', desc: 'Granos cultivados a más de 1,800 metros sobre el nivel del mar.' },
+              { id: 'II', title: 'Tueste de Precisión', desc: 'Control térmico por sensores para liberar el perfil exacto de sabor.' },
+              { id: 'III', title: 'Molienda Diamantada', desc: 'Uniformidad absoluta para una extracción perfecta y controlada.' }
+            ].map((item, i) => (
+              <div key={i} className="reveal-text mask-reveal border-b border-bone/10 py-12 grid grid-cols-12 items-center hover:bg-gold/5 transition-colors duration-700 group">
+                <span className="col-span-1 font-serif text-2xl text-gold/60">{item.id}</span>
+                <h3 className="col-span-11 md:col-span-4 text-title text-3xl group-hover:translate-x-4 transition-transform duration-500">{item.title}</h3>
+                <p className="col-span-12 md:col-start-7 md:col-span-6 text-body text-sm opacity-40">
+                  {item.desc}
                 </p>
               </div>
             ))}

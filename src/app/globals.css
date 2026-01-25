@@ -35,6 +35,16 @@
   .px-frame { @apply px-5 md:px-20; }
   .py-section { @apply py-[120px] md:py-[240px]; }
 
+  /* MASK REVEAL EFFECT */
+  .mask-reveal {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .mask-reveal.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
   /* BOTÓN RITUAL V3 - CINEMÁTICO */
   .btn-ritual {
     @apply relative px-12 py-5 border border-gold/50 text-gold font-sans text-[11px] uppercase tracking-[0.4em] transition-all duration-500 overflow-hidden cursor-pointer inline-flex items-center justify-center gap-4;
