@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import HeroSequence from '@/components/HeroSequence'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -11,6 +12,10 @@ export default function Home() {
   const containerRef = useRef(null)
 
   useEffect(() => {
+    // Enable GSAP smooth scrolling features
+    ScrollTrigger.normalizeScroll(true)
+    ScrollTrigger.config({ limitCallbacks: true })
+
     const ctx = gsap.context(() => {
       gsap.to(boxRef.current, {
         rotate: 360,
@@ -33,14 +38,23 @@ export default function Home() {
       })
     }, containerRef)
 
-    return () => ctx.revert()
+    return () => {
+      ctx.revert()
+      ScrollTrigger.normalizeScroll(false)
+    }
   }, [])
 
   return (
     <main ref={containerRef} className="min-h-screen">
+      <HeroSequence 
+        frameCount={162} 
+        baseUrl="/images/hero-sequence" 
+        extension="webp" 
+      />
+
       {/* Hero Section */}
       <section className="h-screen flex flex-col items-center justify-center bg-zinc-950 text-white p-24">
-        <h1 className="text-6xl font-bold mb-8">Next.js + GSAP + Lenis</h1>
+        <h1 className="text-6xl font-bold mb-8">Next.js + GSAP</h1>
         <div 
           ref={boxRef}
           className="w-32 h-32 bg-orange-500 rounded-2xl flex items-center justify-center text-black font-bold"
@@ -53,9 +67,9 @@ export default function Home() {
       {/* Content Section */}
       <section className="h-screen flex items-center justify-center bg-zinc-900 text-white p-24 reveal-container">
         <div className="max-w-2xl text-center">
-          <h2 className="reveal-text text-4xl font-bold mb-6">Smooth Scrolling</h2>
+          <h2 className="reveal-text text-4xl font-bold mb-6">Native GSAP Scroll</h2>
           <p className="reveal-text text-xl text-zinc-400">
-            This project is integrated with Lenis for high-performance smooth scrolling and GSAP for powerful animations.
+            Now using GSAP ScrollTrigger for global scroll normalization and high-performance animations.
           </p>
         </div>
       </section>
