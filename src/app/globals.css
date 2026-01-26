@@ -1,47 +1,72 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-void: #0A0A0A;
+  --color-charcoal: #1A1A1D;
+  --color-gold: #C9A227;
+  --color-bone: #F5F5F0;
+  --color-muted: #525252;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-void: var(--color-void);
+  --color-charcoal: var(--color-charcoal);
+  --color-gold: var(--color-gold);
+  --color-bone: var(--color-bone);
+  --color-muted: var(--color-muted);
+  
+  --font-serif: var(--font-serif);
+  --font-urbanist: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-void text-bone font-sans;
   }
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
+@layer utilities {
+  .text-hero { @apply font-serif text-6xl md:text-[12rem] leading-[0.8] tracking-tighter; }
+  .text-title { @apply font-serif text-4xl md:text-6xl leading-[1.0] font-light; }
+  .text-label { @apply font-sans text-[10px] tracking-[0.2em] uppercase text-gold; }
+  .text-body { @apply font-sans text-base md:text-lg leading-relaxed text-bone/80 tracking-wide; }
+  .px-frame { @apply px-5 md:px-20; }
+  .py-section { @apply py-[120px] md:py-[240px]; }
+
+  /* BOTÓN RITUAL V3 - CINEMÁTICO */
+  .btn-ritual {
+    @apply relative px-12 py-5 border border-gold/50 text-gold font-sans text-[11px] uppercase tracking-[0.4em] transition-all duration-500 overflow-hidden cursor-pointer inline-flex items-center justify-center gap-4;
+    border-radius: 2px;
+  }
+
+  /* Capa de fondo diagonal */
+  .btn-ritual::before {
+    content: '';
+    @apply absolute top-0 left-0 w-[120%] h-full bg-gold -translate-x-[110%] -skew-x-[20deg] transition-transform duration-500 ease-in-out;
+    z-index: 0;
+  }
+
+  .btn-ritual:hover::before {
+    @apply translate-x-[-5%];
+  }
+
+  /* Cambio de color de texto */
+  .btn-ritual:hover {
+    @apply text-void border-gold shadow-[0_0_25px_rgba(201,162,39,0.4)];
+  }
+
+  .btn-ritual span, .btn-ritual svg {
+    @apply relative z-10;
+  }
+
+  .btn-ritual svg {
+    @apply transition-transform duration-500 -translate-x-2 opacity-0;
+  }
+
+  .btn-ritual:hover svg {
+    @apply translate-x-0 opacity-100;
+  }
 }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+html { scroll-behavior: auto !important; }
+body { background: var(--color-void); color: var(--color-bone); }

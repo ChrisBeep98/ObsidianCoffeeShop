@@ -10,13 +10,16 @@ interface HeroSequenceProps {
   frameCount: number
   baseUrl: string
   extension: string
+  children?: React.ReactNode
 }
 
-export default function HeroSequence({ frameCount, baseUrl, extension }: HeroSequenceProps) {
+export default function HeroSequence({ frameCount, baseUrl, extension, children }: HeroSequenceProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const [images, setImages] = useState<HTMLImageElement[]>([])
   const [isLoading, setIsLoading] = useState(true)
+
+  // ... (preloading logic remains same)
 
   // Preload images
   useEffect(() => {
@@ -81,7 +84,6 @@ export default function HeroSequence({ frameCount, baseUrl, extension }: HeroSeq
       const x = (canvasWidth - newWidth) / 2
       const y = (canvasHeight - newHeight) / 2
 
-      // Drawing the current image using the fixed reference dimensions
       context.drawImage(img, x, y, newWidth, newHeight)
     }
 
@@ -104,11 +106,23 @@ export default function HeroSequence({ frameCount, baseUrl, extension }: HeroSeq
         trigger: containerRef.current,
         start: 'top top',
         end: '+=400%',
-        scrub: 1.5, // Increased from 0.1 for that "inertia" feel
+        scrub: 1.5,
         pin: true,
         anticipatePin: 1,
       },
       onUpdate: render,
+    })
+
+    // Animation for children (the title) to fade out at the end of the sequence
+    gsap.to('.hero-child-content', {
+      opacity: 0,
+      y: -50,
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: '60% top',
+        end: '95% top',
+        scrub: true,
+      }
     })
 
     render()
@@ -122,14 +136,17 @@ export default function HeroSequence({ frameCount, baseUrl, extension }: HeroSeq
   return (
     <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-black">
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center text-white z-10">
-          <p className="text-xl font-medium animate-pulse">Loading Experience...</p>
+        <div className="absolute inset-0 flex items-center justify-center text-white z-50 bg-black">
+          <p className="text-xl font-medium animate-pulse font-serif italic">The Ritual is loading...</p>
         </div>
       )}
       <canvas
         ref={canvasRef}
         className="block w-full h-full object-cover"
       />
+      <div className="hero-child-content absolute inset-0 z-10">
+        {children}
+      </div>
     </div>
   )
 }
