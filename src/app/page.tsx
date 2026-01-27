@@ -174,9 +174,9 @@ export default function Home() {
         <section className="relative h-full flex flex-col justify-between pb-32 pt-20 md:justify-center md:py-0 px-frame pointer-events-none">
           {/* Central Ritual Word (Absolute Top Center) */}
           <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-32 md:pt-12 pointer-events-none opacity-0 z-0">
-            <h2 className="text-[25vw] md:text-[18vw] leading-none font-serif font-bold tracking-[0.1em] md:tracking-[0.15em] select-none text-transparent bg-clip-text"
+            <h2 className="text-cinematic-display"
                 style={{ 
-                  backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.6) 0%, rgba(201, 162, 39, 0) 100%)',
+                  backgroundImage: 'linear-gradient(180deg, rgba(var(--color-gold-rgb), 0.6) 0%, rgba(var(--color-gold-rgb), 0) 100%)',
                   filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.2))'
                 }}>
               ORIGEN
@@ -222,7 +222,7 @@ export default function Home() {
                 <span className="text-hero font-medium text-bone">
                   El Secreto
                 </span>
-                <span className="font-sans text-[1.7rem] md:text-5xl lg:text-6xl tracking-[0.3em] md:tracking-[0.5em] text-gold uppercase font-extrabold md:ml-32 mt-1 md:mt-0">
+                <span className="text-hero-sub md:ml-32 mt-1 md:mt-0">
                   De La Cosecha
                 </span>
               </h1>

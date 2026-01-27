@@ -4,6 +4,7 @@
   --color-void: #0A0A0A;
   --color-charcoal: #1A1A1D;
   --color-gold: #C9A227;
+  --color-gold-rgb: 201, 162, 39;
   --color-bone: #F5F5F0;
   --color-muted: #525252;
   --color-cherry: #A33327;
@@ -29,6 +30,8 @@
 
 @layer utilities {
   .text-hero { @apply font-serif text-[5.4rem] md:text-[12rem] leading-[0.8] tracking-tighter; }
+  .text-hero-sub { @apply font-sans text-[1.7rem] md:text-5xl lg:text-6xl tracking-[0.3em] md:tracking-[0.5em] text-gold uppercase font-extrabold; }
+  .text-cinematic-display { @apply text-[25vw] md:text-[18vw] leading-none font-serif font-bold tracking-[0.1em] md:tracking-[0.15em] select-none text-transparent bg-clip-text; }
   .text-title { @apply font-serif text-4xl md:text-6xl leading-[1.0] font-light; }
   .text-label { @apply font-sans text-[10px] tracking-[0.2em] uppercase text-gold; }
   .text-body { @apply font-sans text-base md:text-lg leading-relaxed text-bone/80 tracking-wide; }
