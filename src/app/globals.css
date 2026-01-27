@@ -45,6 +45,23 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
+  /* NOISE EFFECT (Refactored: Hero-Only Grain) */
+  .noise-overlay {
+    @apply absolute inset-0 w-full h-full pointer-events-none;
+    z-index: 5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+    filter: contrast(130%) brightness(110%);
+  }
+
+  /* VIGNETTE EFFECT (Intensified) */
+  .vignette-overlay {
+    @apply absolute inset-0 w-full h-full pointer-events-none;
+    z-index: 4;
+    background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.95) 100%);
+  }
+
   /* BOTÓN RITUAL V3 - CINEMÁTICO */
   .btn-ritual {
     @apply relative px-12 py-5 border border-gold/50 text-gold font-sans text-[11px] uppercase tracking-[0.4em] transition-all duration-500 overflow-hidden cursor-pointer inline-flex items-center justify-center gap-4;

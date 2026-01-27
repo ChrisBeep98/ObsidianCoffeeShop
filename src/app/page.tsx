@@ -157,6 +157,10 @@ export default function Home() {
         baseUrl="/images/hero-sequence" 
         extension="webp" 
       >
+        {/* Cinematic Overlays (Hero Only) */}
+        <div className="noise-overlay"></div>
+        <div className="vignette-overlay"></div>
+
         <section className="relative h-full flex items-center px-frame pointer-events-none">
           {/* Central Ritual Word (Absolute Top Center) */}
           <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-12 pointer-events-none opacity-0 z-0">
