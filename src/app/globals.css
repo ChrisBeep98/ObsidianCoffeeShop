@@ -28,7 +28,7 @@
 }
 
 @layer utilities {
-  .text-hero { @apply font-serif text-[6.5rem] md:text-[12rem] leading-[0.8] tracking-tighter; }
+  .text-hero { @apply font-serif text-[5.4rem] md:text-[12rem] leading-[0.8] tracking-tighter; }
   .text-title { @apply font-serif text-4xl md:text-6xl leading-[1.0] font-light; }
   .text-label { @apply font-sans text-[10px] tracking-[0.2em] uppercase text-gold; }
   .text-body { @apply font-sans text-base md:text-lg leading-relaxed text-bone/80 tracking-wide; }

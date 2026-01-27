@@ -177,31 +177,30 @@ export default function Home() {
             <h2 className="text-[25vw] md:text-[18vw] leading-none font-serif font-bold tracking-[0.15em] select-none text-transparent bg-clip-text"
                 style={{ 
                   backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0) 100%)',
-                  filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.2))',
-                  WebkitTextStroke: '1px rgba(201, 162, 39, 0.2)'
+                  filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.2))'
                 }}>
               ORIGEN
             </h2>
           </div>
 
           {/* Floating Chip Marker (Left, Maximum Contrast) */}
-          <div className="hero-center-hud absolute top-[48%] left-[15%] flex items-center pointer-events-none opacity-0 z-0">
+          <div className="hero-center-hud absolute top-[36%] md:top-[44%] left-[10%] md:left-[15%] flex items-center pointer-events-none opacity-0 z-0">
             {/* The Chip */}
-            <div className="bg-[#0A0A0A] border border-gold/40 px-5 py-2.5 flex items-center gap-3 shadow-[0_20px_50px_rgba(0,0,0,1)] relative overflow-hidden">
+            <div className="bg-[#0A0A0A]/80 backdrop-blur-md border border-gold/40 px-3 py-1.5 md:px-5 md:py-2.5 flex items-center gap-2 md:gap-3 shadow-[0_20px_50px_rgba(0,0,0,1)] relative overflow-hidden">
               {/* Left Accent Bar */}
               <div className="absolute left-0 top-0 h-full w-[2px] bg-gold"></div>
               
-              <div className="w-2 h-2 bg-gold rounded-full animate-pulse shadow-[0_0_12px_rgba(201,162,39,0.9)]"></div>
-              <span className="font-serif text-[13px] text-white tracking-[0.1em] italic first-letter:capitalize">
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse shadow-[0_0_12px_rgba(201,162,39,0.9)]"></div>
+              <span className="font-serif text-[11px] md:text-[13px] text-white tracking-[0.1em] italic first-letter:capitalize">
                 Pureza de grano
               </span>
             </div>
             
             {/* The Pointing Line */}
-            <div className="w-24 h-[1px] bg-gold/50 shadow-[0_0_8px_rgba(201,162,39,0.4)]"></div>
+            <div className="w-12 md:w-24 h-[1px] bg-gold/50 shadow-[0_0_8px_rgba(201,162,39,0.4)]"></div>
             
             {/* The Target Dot */}
-            <div className="w-2.5 h-2.5 bg-gold rounded-full shadow-[0_0_20px_rgba(201,162,39,1)]"></div>
+            <div className="w-2 h-2 md:w-2.5 md:h-2.5 bg-gold rounded-full shadow-[0_0_20px_rgba(201,162,39,1)]"></div>
           </div>
 
           {/* Subtitle Message (Act II - Centered) */}
@@ -223,7 +222,7 @@ export default function Home() {
                 <span className="text-hero font-medium text-bone">
                   El Secreto
                 </span>
-                <span className="font-sans text-[1.7rem] md:text-5xl lg:text-6xl tracking-[0.3em] md:tracking-[0.5em] text-gold uppercase font-extrabold md:ml-32 mt-4 md:mt-0">
+                <span className="font-sans text-[1.7rem] md:text-5xl lg:text-6xl tracking-[0.3em] md:tracking-[0.5em] text-gold uppercase font-extrabold md:ml-32 mt-1 md:mt-0">
                   De La Cosecha
                 </span>
               </h1>
