@@ -75,45 +75,55 @@ export default function Home() {
       })
 
       // HERO TRANSITION TIMELINE
-      // Synchronized with the 400% scroll distance of the HeroSequence
+      // Total duration of this timeline will be exactly 1.0 for perfect scroll mapping
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: 'body', // We trigger from top
+          trigger: containerRef.current,
           start: 'top top',
-          end: '+=400%', // Matches the HeroSequence pin duration
+          end: '+=400%',
           scrub: 1,
         }
       })
 
-      // 1. Texts depart to sides
+      // 1. Act I Departure (0.0 to 0.4)
       tl.to('.hero-left', { x: '-120%', opacity: 0, ease: 'power2.in' }, 0)
       tl.to('.hero-right', { x: '120%', opacity: 0, ease: 'power2.in' }, 0)
       
-      // 2. Central Ritual Word Reveals
-      // Starts at 64% as requested
-      tl.fromTo('.hero-center-ritual', 
-        { scale: 0.95, opacity: 0, y: 30 },
-        { scale: 1, opacity: 0.5, y: 0, duration: 0.7, ease: 'power2.out' },
+      // 2. Act II Entrance (Starts at 0.64, duration 0.1)
+      tl.fromTo('.hero-center-ritual',
+        { opacity: 0, y: 30, scale: 0.95 },
+        { opacity: 0.5, y: 0, scale: 1, duration: 0.1, ease: 'power2.out' },
+        0.64
+      )
+      tl.fromTo('.hero-subtitle',
+        { opacity: 0, x: 100 },
+        { opacity: 1, x: 0, duration: 0.1, ease: 'power2.out' },
+        0.64
+      )
+      tl.fromTo('.hero-center-hud',
+        { opacity: 0, scale: 0.8 },
+        { opacity: 1, scale: 1, duration: 0.1, ease: 'power2.out' },
         0.64
       )
       
-      tl.fromTo('.hero-subtitle',
-        { opacity: 0, x: 50 },
-        { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out' },
-        0.7 // Slightly staggered after ORIGEN starts at 64%
+      // 3. Act II Hold (0.75 to 0.9) - Nothing happens, they stay visible
+      
+      // 4. Act II Exit (Starts at 0.9, ends strictly at 1.0)
+      tl.to('.hero-center-ritual',
+        { opacity: 0, y: -40, duration: 0.1, ease: 'power2.in' },
+        0.9
+      )
+      tl.to('.hero-subtitle',
+        { opacity: 0, x: -150, duration: 0.1, ease: 'power2.in' },
+        0.9
+      )
+      tl.to('.hero-center-hud',
+        { opacity: 0, scale: 0.7, duration: 0.1, ease: 'power2.in' },
+        0.9
       )
       
-      // HUD Reveal
-      tl.fromTo('.hero-center-hud',
-        { opacity: 0, scale: 0.8 },
-        { opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' },
-        0.75
-      )
-      
-      // 3. Fade out the Ritual word just before unpinning
-      tl.to('.hero-center-ritual', { opacity: 0, y: -20, duration: 0.4 }, 0.95)
-      tl.to('.hero-subtitle', { opacity: 0, y: -20, duration: 0.4 }, 0.95)
-      tl.to('.hero-center-hud', { opacity: 0, scale: 1.1, duration: 0.4 }, 0.95)
+      // Final "Kill Switch" at 1.0 to prevent any re-appearance
+      tl.set(['.hero-center-ritual', '.hero-subtitle', '.hero-center-hud'], { opacity: 0 }, 1.0)
 
       gsap.to(boxRef.current, {
         rotate: 360,
