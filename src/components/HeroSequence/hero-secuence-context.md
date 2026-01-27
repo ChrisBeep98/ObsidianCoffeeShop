@@ -3,22 +3,14 @@
 ## 🎯 Narrative Vision
 The HeroSequence is designed as a **Cinematic Diptych** (a two-act story) driven by the user's scroll. It transitions from a commercial/informative state to an abstract/essential state.
 
-## 🎨 Design System & Tokenization (Updated)
-This component strictly adheres to the **Obsidian Design System**.
-- **Display Typography:** Uses `.text-cinematic-display` (formerly raw `25vw`) for the massive "ORIGEN" text.
-- **Sub-Headlines:** Uses `.text-hero-sub` for "De La Cosecha".
-- **Color Logic:** Uses `rgba(var(--color-gold-rgb), opacity)` for dynamic gradient interactions.
-
 ---
 
 ## 🎭 Act I: The Invitation
 **Range:** 0% - 64% of Scroll
 
 ### 📦 Elements
-- **Primary Title:** `El Secreto` (Serif/Bone) + `De La Cosecha` (Sans/Gold).
-- **Mobile Adjustments:**
-    - Title Size: `5.4rem` (Tight leading).
-    - Subtitle Spacing: Reduced top margin (`mt-1`) for cohesion.
+- **Primary Title:** `El Secreto de la Cosecha` (Serif/Urbanist Mix).
+- **Meta-Data:** Technical paragraph describing standards and origin.
 - **CTA:** `ver catálogo` (Magnetic, Cinematic button).
 
 ### ⚙️ Behavior
@@ -34,10 +26,7 @@ This component strictly adheres to the **Obsidian Design System**.
 **Range:** 64% - 100% of Scroll
 
 ### 📦 Elements
-- **Abstract Title:** `ORIGEN` (`.text-cinematic-display`).
-    - **Visual Weight:** Font weight is `bold` but optically enhanced on mobile via `text-shadow`.
-    - **Opacity:** Starts at **0.6** on mobile for subtle integration with the dark background.
-    - **Tracking:** Tightened to `0.1em` on mobile for impact.
+- **Abstract Title:** `ORIGEN` (Light Serif, Gold-to-Transparent Gradient).
 - **HUD Marker:** Floating Glass-morphism Chip (`pureza de grano`) with a technical pointer.
 - **Brutalist Message:** `la alquimia de lo eterno` (Lowercase, massive scale).
 
@@ -52,4 +41,4 @@ This component strictly adheres to the **Obsidian Design System**.
 - **Scroll Engine:** GSAP + ScrollTrigger (400vh duration).
 - **Rendering:** HTML5 Canvas (High-DPI optimized).
 - **Assets:** 162 .webp frames located in `/public/images/hero-sequence/`.
-- **Layout:** 12-column Grid System via `.px-frame`.
+- **Layout:** 12-column Grid System.
