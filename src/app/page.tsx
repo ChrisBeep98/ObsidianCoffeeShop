@@ -173,8 +173,8 @@ export default function Home() {
 
         <section className="relative h-full flex flex-col justify-between pb-32 pt-20 md:justify-center md:py-0 px-frame pointer-events-none">
           {/* Central Ritual Word (Absolute Top Center) */}
-          <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-12 pointer-events-none opacity-0 z-0">
-            <h2 className="text-[18vw] leading-none font-serif font-bold tracking-[0.15em] select-none text-transparent bg-clip-text"
+          <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-32 md:pt-12 pointer-events-none opacity-0 z-0">
+            <h2 className="text-[25vw] md:text-[18vw] leading-none font-serif font-black tracking-[0.15em] select-none text-transparent bg-clip-text"
                 style={{ 
                   backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.4) 0%, rgba(201, 162, 39, 0) 100%)',
                   filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.2))'
@@ -203,13 +203,13 @@ export default function Home() {
             <div className="w-2.5 h-2.5 bg-gold rounded-full shadow-[0_0_20px_rgba(201,162,39,1)]"></div>
           </div>
 
-          {/* Subtitle Message (Columns 8-12, Bottom Right) */}
-          <div className="hero-subtitle absolute bottom-20 md:bottom-32 w-full px-frame pointer-events-none opacity-0 z-0">
-            <div className="grid grid-cols-12 w-full">
-              <div className="col-span-12 md:col-start-7 md:col-span-6 text-left">
-                 <h3 className="font-sans text-6xl md:text-8xl lg:text-[9rem] font-bold lowercase tracking-tighter text-bone leading-[0.8]"
+          {/* Subtitle Message (Act II - Centered) */}
+          <div className="hero-subtitle absolute bottom-40 md:bottom-32 left-0 w-full pointer-events-none opacity-0 z-0">
+            <div className="w-full text-center md:text-left md:px-frame md:grid md:grid-cols-12">
+              <div className="md:col-start-7 md:col-span-6">
+                 <h3 className="font-sans text-7xl md:text-8xl lg:text-[9rem] font-bold lowercase tracking-tighter text-bone leading-[0.8]"
                      style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.3))' }}>
-                   la alquimia <br/> <span className="text-gold tracking-widest text-4xl md:text-6xl lg:text-7xl block mt-4">de lo eterno</span>
+                   la alquimia <br/> <span className="text-gold tracking-widest text-5xl md:text-6xl lg:text-7xl block mt-4">de lo eterno</span>
                  </h3>
               </div>
             </div>
