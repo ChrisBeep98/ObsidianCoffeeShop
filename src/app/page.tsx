@@ -174,9 +174,9 @@ export default function Home() {
         <section className="relative h-full flex flex-col justify-between pb-32 pt-20 md:justify-center md:py-0 px-frame pointer-events-none">
           {/* Central Ritual Word (Absolute Top Center) */}
           <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-32 md:pt-12 pointer-events-none opacity-0 z-0">
-            <h2 className="text-[25vw] md:text-[18vw] leading-none font-serif font-black md:font-bold tracking-[0.1em] md:tracking-[0.15em] select-none text-transparent bg-clip-text"
+            <h2 className="text-[25vw] md:text-[18vw] leading-none font-serif font-bold tracking-[0.15em] select-none text-transparent bg-clip-text"
                 style={{ 
-                  backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.5) 0%, rgba(201, 162, 39, 0) 100%)',
+                  backgroundImage: 'linear-gradient(180deg, rgba(201, 162, 39, 0.6) 0%, rgba(201, 162, 39, 0) 100%)',
                   filter: 'drop-shadow(0 5px 15px rgba(0,0,0,0.2))'
                 }}>
               ORIGEN
