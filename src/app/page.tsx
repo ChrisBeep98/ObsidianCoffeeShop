@@ -171,7 +171,7 @@ export default function Home() {
         <div className="noise-overlay"></div>
         <div className="vignette-overlay"></div>
 
-        <section className="relative h-full flex items-center px-frame pointer-events-none">
+        <section className="relative h-full flex flex-col justify-between pb-32 pt-20 md:justify-center md:py-0 px-frame pointer-events-none">
           {/* Central Ritual Word (Absolute Top Center) */}
           <div className="hero-center-ritual absolute top-0 left-0 w-full h-full flex items-start justify-center pt-12 pointer-events-none opacity-0 z-0">
             <h2 className="text-[18vw] leading-none font-serif font-bold tracking-[0.15em] select-none text-transparent bg-clip-text"
@@ -215,31 +215,30 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid grid-cols-12 w-full relative z-10">
-            {/* Title Section (Up) */}
-            <div className="hero-left col-span-12 md:col-span-10 md:-mt-32 will-change-transform">
+          {/* Top Part: Title */}
+          <div className="hero-left w-full md:grid md:grid-cols-12 will-change-transform z-10">
+            <div className="col-span-12 md:col-span-10">
               <h1 className="flex flex-col gap-0">
                 <span className="text-hero font-medium text-bone">
                   El Secreto
                 </span>
-                <span className="font-sans text-2xl md:text-5xl lg:text-6xl tracking-[0.3em] md:tracking-[0.5em] text-gold uppercase font-extrabold md:ml-32 mt-4 md:mt-0">
+                <span className="font-sans text-[1.7rem] md:text-5xl lg:text-6xl tracking-[0.3em] md:tracking-[0.5em] text-gold uppercase font-extrabold md:ml-32 mt-4 md:mt-0">
                   De La Cosecha
                 </span>
               </h1>
             </div>
+          </div>
 
-            {/* Paragraph Section (Column 9 to 11, Align Left) */}
-            <div className="hero-right col-span-12 md:col-start-9 md:col-span-3 text-left self-end md:mb-[-120px] flex flex-col gap-8 will-change-transform">
+          {/* Bottom Part: Paragraph & Button */}
+          <div className="hero-right w-full md:grid md:grid-cols-12 will-change-transform z-10">
+            <div className="col-span-12 md:col-start-9 md:col-span-3 text-left flex flex-col gap-8">
               <div className="flex flex-col gap-2">
-                <span className="font-sans text-xs font-bold tracking-[0.2em] uppercase text-cherry block opacity-100">
-                  // Notas de Origen
-                </span>
                 <p className="text-body lowercase opacity-70 border-l border-gold/30 pl-4">
                   cultivado bajo los estándares más exigentes, cada grano cuenta una historia de dedicación y maestría en el arte del café.
                 </p>
               </div>
               
-              <div className="pl-0 mt-8">
+              <div className="pl-0">
                 <button className="btn-ritual magnetic-btn pointer-events-auto">
                   <span>ver catálogo</span>
                   <svg 
