@@ -110,7 +110,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-left w-full md:grid md:grid-cols-12 will-change-transform z-10">
+          <div className="hero-left w-full md:grid md:grid-cols-12 will-change-transform z-10 mt-[52px] md:mt-0">
             <div className="col-span-12 md:col-span-10">
               <h1 className="flex flex-col gap-0">
                 <span className="text-hero font-medium text-bone">El Secreto</span>
