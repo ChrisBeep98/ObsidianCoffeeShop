@@ -114,10 +114,10 @@ export default function HeroSequence({ frameCount, baseUrl, extension, children 
   }, [images, frameCount])
 
   return (
-    /* TRACK: Altura física real que reserva el espacio del scroll */
-    <div ref={trackRef} className="hero-track-container relative w-full h-[500vh] bg-black">
+    /* TRACK: Altura física real: 3200px en móvil, 4000px en desktop */
+    <div ref={trackRef} className="hero-track-container relative w-full h-[3200px] md:h-[4000px] bg-black">
       
-      {/* STICKY: Mantiene el video visible mientras recorres los 500vh */}
+      {/* STICKY: Mantiene el video visible mientras recorres el track */}
       <div className="sticky top-0 w-full h-screen overflow-hidden">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center text-white z-50 bg-black">
