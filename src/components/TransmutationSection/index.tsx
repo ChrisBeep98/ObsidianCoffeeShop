@@ -155,7 +155,7 @@ export default function TransmutationSection() {
                     </div>
 
                     <div className="max-w-md md:max-w-2xl" style={{ filter: 'drop-shadow(0 10px 30px rgba(0,0,0,1))' }}>
-                        <h3 className="font-serif text-3xl md:text-7xl text-bone mb-6 leading-[0.9] tracking-tight uppercase">
+                        <h3 className="font-serif font-bold text-3xl md:text-7xl text-bone mb-6 leading-[0.9] tracking-tight uppercase">
                             {step.title.split(' ').map((word, idx) => (
                                 <span key={idx} className={idx === step.title.split(' ').length - 1 ? 'text-gold italic md:block' : 'md:inline'}>
                                     {word}{' '}
