@@ -6,33 +6,36 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const ACTS = [
+const RITUAL_STEPS = [
   {
-    id: 'nigredo',
-    step: '01',
-    title: 'NIGREDO',
-    subtitle: 'Materia Oscura',
-    desc: 'El origen. 1,850 metros sobre el nivel del mar. Suelos volcánicos donde el misterio de la tierra se concentra en cada grano.',
-    img: 'https://images.unsplash.com/photo-1611162458324-a22863a72596?q=80&w=2560&auto=format&fit=crop',
-    align: 'md:flex-row'
+    id: 'origin',
+    num: '01',
+    label: 'TERROIR',
+    title: 'CULTIVADO EN LAS NUBES',
+    desc: 'Donde la niebla concentra la complejidad del grano a 1,850 metros de altura.',
+    img: 'https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=2070&auto=format&fit=crop',
+    fromX: 100,
+    align: 'justify-end text-right items-end'
   },
   {
-    id: 'albedo',
-    step: '02',
-    title: 'ALBEDO',
-    subtitle: 'Purificación',
-    desc: 'El proceso. Tueste de precisión para liberar los aceites esenciales, transformando la densidad en pura luz aromática.',
-    img: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2560&auto=format&fit=crop',
-    align: 'md:flex-row-reverse'
+    id: 'roast',
+    num: '02',
+    label: 'PROCESO',
+    title: 'CIENCIA Y FUEGO',
+    desc: 'Transmutación térmica en lecho fluido. El alma liberada mediante una precisión técnica absoluta.',
+    img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop',
+    fromX: -100,
+    align: 'justify-start text-left items-start'
   },
   {
-    id: 'rubedo',
-    step: '03',
-    title: 'RUBEDO',
-    subtitle: 'Oro Líquido',
-    desc: 'La extracción. 9 bares de presión. La culminación del ritual donde el café alcanza su estado de perfección absoluta.',
-    img: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2560&auto=format&fit=crop',
-    align: 'md:flex-row'
+    id: 'elixir',
+    num: '03',
+    label: 'ELIXIR',
+    title: 'LA GOTA DEFINITIVA',
+    desc: '9 bares de presión constante. El despertar sensorial de la obsidiana líquida.',
+    img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=2070&auto=format&fit=crop',
+    fromX: 100,
+    align: 'justify-end text-right items-end'
   }
 ]
 
@@ -41,123 +44,126 @@ export default function TransmutationSection() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      
-      const cards = gsap.utils.toArray('.transmutation-card') as HTMLElement[]
+      const items = gsap.utils.toArray('.monolith-item') as HTMLElement[]
 
-      cards.forEach((card) => {
-        const imgContainer = card.querySelector('.img-reveal-wrapper')
-        const img = card.querySelector('.card-img')
-        const text = card.querySelector('.text-reveal')
-        const number = card.querySelector('.giant-number')
+      items.forEach((item, i) => {
+        const step = RITUAL_STEPS[i]
+        const img = item.querySelector('.monolith-img')
+        const content = item.querySelector('.monolith-content')
 
-        // 1. Revelado de la imagen por máscara (clip-path)
-        gsap.fromTo(imgContainer,
-          { clipPath: 'inset(100% 0% 0% 0%)' },
+        // 1. ENTRADA LATERAL (Optimización GPU)
+        gsap.fromTo(item, 
+          { x: step.fromX, opacity: 0 },
           {
-            clipPath: 'inset(0% 0% 0% 0%)',
-            duration: 1.5,
-            ease: 'power4.inOut',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 80%',
-            }
-          }
-        )
-
-        // 2. Efecto Parallax en la imagen
-        gsap.fromTo(img,
-          { scale: 1.3, y: '10%' },
-          {
-            scale: 1,
-            y: '-10%',
-            ease: 'none',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: true
-            }
-          }
-        )
-
-        // 3. Revelado del texto
-        gsap.fromTo(text,
-          { y: 50, opacity: 0 },
-          {
-            y: 0,
+            x: 0,
             opacity: 1,
-            duration: 1,
+            duration: 1.4,
             ease: 'power3.out',
+            force3D: true, // Forzar GPU
             scrollTrigger: {
-              trigger: card,
-              start: 'top 70%',
+              trigger: item,
+              start: 'top 90%',
+              end: 'top 30%',
+              scrub: 1
             }
           }
         )
 
-        // 4. Movimiento del número gigante
-        gsap.fromTo(number,
-          { y: 100, opacity: 0 },
-          {
-            y: -50,
-            opacity: 0.05,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 2
-            }
+        // 2. PARALLAX DE IMAGEN (Optimización GPU)
+        gsap.to(img, {
+          yPercent: 12,
+          ease: 'none',
+          force3D: true, // Forzar GPU
+          scrollTrigger: {
+            trigger: item,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
           }
-        )
+        })
+
+        // 3. REVELADO SUTIL DE TEXTO INTERNO
+        gsap.from(content, {
+          y: 30,
+          opacity: 0,
+          duration: 1,
+          delay: 0.2,
+          force3D: true,
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 70%',
+          }
+        })
       })
-
     }, containerRef)
 
     return () => ctx.revert()
   }, [])
 
   return (
-    <section ref={containerRef} className="w-full bg-void py-32 relative z-20">
-      <div className="flex flex-col gap-40 md:gap-64">
-        {ACTS.map((act) => (
+    <section ref={containerRef} className="relative w-full bg-void py-32 md:py-64 z-20 overflow-x-hidden">
+      
+      <div className="flex flex-col gap-32 md:gap-56">
+        {RITUAL_STEPS.map((step, i) => (
           <div 
-            key={act.id} 
-            className={`transmutation-card flex flex-col ${act.align} items-center gap-12 md:gap-24 px-frame`}
+            key={step.id} 
+            className={`monolith-item relative w-full flex ${i % 2 !== 0 ? 'justify-start' : 'justify-end'} px-frame will-change-transform`}
           >
-            {/* Imagen con Revelado */}
-            <div className="img-reveal-wrapper relative w-full md:w-1/2 aspect-[4/5] md:aspect-square overflow-hidden bg-charcoal rounded-sm">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src={act.img} 
-                  alt={act.title}
-                  className="card-img w-full h-[120%] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-            </div>
-
-            {/* Contenido Editorial */}
-            <div className="text-reveal w-full md:w-1/2 flex flex-col gap-6 relative">
-                <div className="giant-number absolute -top-20 -left-10 text-[12rem] md:text-[20rem] font-serif font-bold text-white select-none">
-                    {act.step}
-                </div>
+            {/* EL MONOLITO */}
+            <div className="relative w-full md:w-[75%] h-[60vh] md:h-[75vh] overflow-hidden group border border-white/5 rounded-sm bg-charcoal shadow-2xl">
                 
-                <div className="relative z-10">
-                    <span className="text-label mb-4 block">// FASE {act.step}</span>
-                    <h2 className="text-hero text-6xl md:text-8xl lg:text-9xl leading-none mb-2">
-                        {act.title}
-                    </h2>
-                    <h3 className="text-title text-2xl md:text-4xl text-gold italic mb-8">
-                        {act.subtitle}
-                    </h3>
-                    <p className="text-body max-w-md border-l border-gold/30 pl-8 lowercase">
-                        {act.desc}
-                    </p>
+                {/* Viñetado Progresivo */}
+                <div className="absolute inset-0 z-10 bg-black/30 pointer-events-none" />
+                <div className="absolute inset-0 z-10 shadow-[inset_0_0_100px_rgba(0,0,0,0.8)] md:shadow-[inset_0_0_250px_rgba(0,0,0,0.95)] pointer-events-none" />
+                
+                {/* Imagen con aceleración GPU */}
+                <img 
+                  src={step.img} 
+                  alt={step.title} 
+                  className="monolith-img w-full h-[125%] object-cover grayscale brightness-[0.4] transition-all duration-[3s] will-change-transform"
+                />
+
+                {/* CONTENIDO EDITORIAL */}
+                <div className={`monolith-content absolute inset-0 z-20 flex flex-col p-8 md:p-20 ${step.align} pointer-events-none`}>
+                    
+                    {/* Badge de Fase */}
+                    <div className="flex items-center gap-4 mb-auto" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))' }}>
+                        <span className="font-mono text-[10px] md:text-xs text-gold/80 tracking-[0.5em] font-bold">0{step.num}</span>
+                        <div className="h-[1px] w-10 bg-gold/30" />
+                        <span className="font-sans text-[10px] md:text-xs text-bone/40 tracking-[0.4em] uppercase font-bold">{step.label}</span>
+                    </div>
+
+                    {/* Títulos: Tamaño "Premium Bold" */}
+                    <div className="max-w-md md:max-w-2xl" style={{ filter: 'drop-shadow(0 10px 30px rgba(0,0,0,1))' }}>
+                        <h3 className="font-serif text-3xl md:text-7xl text-bone mb-6 leading-[0.9] tracking-tight uppercase">
+                            {step.title.split(' ').map((word, idx) => (
+                                <span key={idx} className={idx === step.title.split(' ').length - 1 ? 'text-gold italic md:block' : 'md:inline'}>
+                                    {word}{' '}
+                                </span>
+                            ))}
+                        </h3>
+                        <p className="text-bone/60 text-base md:text-xl font-sans leading-relaxed lowercase italic border-l-2 border-gold/30 pl-6 md:pl-10">
+                            {step.desc}
+                        </p>
+                    </div>
+
+                    {/* Ledger decorativo inferior */}
+                    <div className="mt-auto opacity-20 font-mono text-[8px] md:text-[10px] tracking-[0.8em] text-white uppercase flex items-center gap-4">
+                        <span>Obsidian Archive</span>
+                        <div className="w-1 h-1 bg-gold rounded-full" />
+                        <span>S_0{step.num}</span>
+                    </div>
                 </div>
             </div>
           </div>
         ))}
       </div>
+
+      {/* FINAL TRANSITION LINE */}
+      <div className="mt-48 flex flex-col items-center opacity-10">
+        <div className="w-[1px] h-40 bg-gradient-to-b from-gold via-gold to-transparent" />
+      </div>
+
     </section>
   )
 }
