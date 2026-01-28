@@ -15,11 +15,9 @@ interface HeroSequenceProps {
 
 export default function HeroSequence({ frameCount, baseUrl, extension, children }: HeroSequenceProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
   const [images, setImages] = useState<HTMLImageElement[]>([])
   const [isLoading, setIsLoading] = useState(true)
-
-  // ... (preloading logic remains same)
 
   // Preload images
   useEffect(() => {
@@ -33,7 +31,6 @@ export default function HeroSequence({ frameCount, baseUrl, extension, children 
       if (loadedCount === frameCount) {
         setImages([...loadedImages])
         setIsLoading(false)
-        // Refresh ScrollTrigger to account for any layout changes
         setTimeout(() => {
           ScrollTrigger.refresh()
         }, 100)
@@ -48,16 +45,14 @@ export default function HeroSequence({ frameCount, baseUrl, extension, children 
         loadedImages[i] = img
         updateProgress()
       }
-      img.onerror = updateProgress // Skip failed images but continue
+      img.onerror = updateProgress
     }
 
-    return () => {
-      isMounted = false
-    }
+    return () => { isMounted = false }
   }, [frameCount, baseUrl, extension])
 
   useEffect(() => {
-    if (images.length === 0 || !canvasRef.current || !containerRef.current) return
+    if (images.length === 0 || !canvasRef.current || !trackRef.current) return
 
     const canvas = canvasRef.current
     const context = canvas.getContext('2d', { alpha: false })
@@ -72,8 +67,6 @@ export default function HeroSequence({ frameCount, baseUrl, extension, children 
       
       const canvasWidth = canvas.width
       const canvasHeight = canvas.height
-      
-      // Use the first image as a reference for dimensions to avoid "jumps"
       const refImg = images[0]
       const imgWidth = refImg.width
       const imgHeight = refImg.height
@@ -99,16 +92,15 @@ export default function HeroSequence({ frameCount, baseUrl, extension, children 
     window.addEventListener('resize', resize)
     resize()
 
+    // Usamos el trackRef (500vh) como trigger para la animación del video
     const tl = gsap.to(airbnb, {
       frame: frameCount - 1,
       ease: 'none',
       scrollTrigger: {
-        trigger: containerRef.current,
+        trigger: trackRef.current,
         start: 'top top',
-        end: '+=400%',
+        end: 'bottom bottom',
         scrub: 1.5,
-        pin: true,
-        anticipatePin: 1,
       },
       onUpdate: render,
     })
@@ -122,18 +114,23 @@ export default function HeroSequence({ frameCount, baseUrl, extension, children 
   }, [images, frameCount])
 
   return (
-    <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-black">
-      {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center text-white z-50 bg-black">
-          <p className="text-xl font-medium animate-pulse font-serif italic">The Ritual is loading...</p>
+    /* TRACK: Altura física real que reserva el espacio del scroll */
+    <div ref={trackRef} className="hero-track-container relative w-full h-[500vh] bg-black">
+      
+      {/* STICKY: Mantiene el video visible mientras recorres los 500vh */}
+      <div className="sticky top-0 w-full h-screen overflow-hidden">
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center text-white z-50 bg-black">
+            <p className="text-xl font-medium animate-pulse font-serif italic">The Ritual is loading...</p>
+          </div>
+        )}
+        <canvas
+          ref={canvasRef}
+          className="block w-full h-full object-cover"
+        />
+        <div className="hero-child-content absolute inset-0 z-10">
+          {children}
         </div>
-      )}
-      <canvas
-        ref={canvasRef}
-        className="block w-full h-full object-cover"
-      />
-      <div className="hero-child-content absolute inset-0 z-10">
-        {children}
       </div>
     </div>
   )
