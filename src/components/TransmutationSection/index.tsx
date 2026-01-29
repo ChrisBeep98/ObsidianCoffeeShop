@@ -117,32 +117,31 @@ export default function TransmutationSection() {
   return (
     <section 
       ref={containerRef} 
-      className="relative w-full bg-void py-32 md:py-64 z-20 overflow-x-hidden"
+      className="relative w-full bg-void py-20 md:py-32 z-20 overflow-x-hidden"
     >
-      <div className="flex flex-col gap-32 md:gap-56">
+      <div className="flex flex-col gap-0">
         {RITUAL_STEPS.map((step, i) => (
           <div 
             key={step.id} 
             className={`monolith-item relative w-full flex ${
               i % 2 !== 0 
-                ? 'justify-start pl-0 pr-5 md:pl-0 md:pr-32' 
-                : 'justify-end pr-0 pl-5 md:pr-0 md:pl-32'
+                ? 'justify-start pl-0 pr-0 md:pr-24' 
+                : 'justify-end pr-0 pl-0 md:pl-24'
             } will-change-transform`}
           >
             {/* EL MONOLITO */}
-            <div className={`relative w-full md:w-[75%] h-[60vh] md:h-[75vh] overflow-hidden group bg-charcoal shadow-2xl ${
-              i % 2 !== 0 ? 'rounded-r-sm' : 'rounded-l-sm'
-            }`}>
+            <div className="relative w-full md:w-[85%] h-[80vh] md:h-[100vh] overflow-hidden group bg-charcoal shadow-2xl">
                 
-                {/* Viñetado Progresivo */}
-                <div className="absolute inset-0 z-10 bg-black/20 pointer-events-none" />
-                <div className="absolute inset-0 z-10 shadow-[inset_0_0_100px_rgba(0,0,0,0.6)] md:shadow-[inset_0_0_250px_rgba(0,0,0,0.8)] pointer-events-none" />
+                {/* Cinematic Flow Vignettes */}
+                <div className="absolute inset-0 z-15 pointer-events-none bg-gradient-to-b from-void via-transparent to-void opacity-90" />
+                <div className="absolute inset-0 z-10 bg-black/40 pointer-events-none" />
+                <div className="absolute inset-0 z-10 shadow-[inset_0_0_150px_rgba(0,0,0,0.8)] md:shadow-[inset_0_0_300px_rgba(0,0,0,0.9)] pointer-events-none" />
                 
                 {/* Imagen con aceleración GPU */}
                 <img 
                   src={step.img} 
                   alt={step.title} 
-                  className="monolith-img w-full h-[120%] object-cover will-change-[transform,filter]"
+                  className="monolith-img w-full h-[125%] object-cover will-change-[transform,filter]"
                 />
 
                 {/* CONTENIDO EDITORIAL */}
