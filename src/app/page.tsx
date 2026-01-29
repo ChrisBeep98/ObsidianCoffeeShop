@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroSequence from '@/components/HeroSequence'
 import TransmutationSection from '@/components/TransmutationSection'
+import ProductShowcase from '@/components/ProductShowcase'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -139,6 +140,9 @@ export default function Home() {
         <TransmutationSection />
       </div>
 
+      {/* ACT III: The Liquid Gold Product Showcase */}
+      <ProductShowcase />
+
       {/* Content Sections */}
       <div className="relative z-20 bg-void px-frame py-section">
           <div className="grid grid-cols-12 w-full gap-y-20">
@@ -149,7 +153,7 @@ export default function Home() {
               </h2>
             </div>
             <div className="col-span-12 md:col-start-7 md:col-span-5 self-end">
-              <p className="text-body border-l border-gold/20 pl-8">
+              <p className="text-body border-l border-gold/20 pl-8 opacity-40">
                 Cada experiencia de alta gama debe tener un arco narrativo. Participamos en un ritual antiguo donde la precisión se encuentra con el misterio de la tierra. No es solo café; es una transición de estado, un momento donde el tiempo se detiene para revelar la esencia del grano.
               </p>
             </div>
