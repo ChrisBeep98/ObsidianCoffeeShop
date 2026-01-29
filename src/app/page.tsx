@@ -77,7 +77,7 @@ export default function Home() {
     <main ref={containerRef} className="min-h-screen bg-void selection:bg-gold selection:text-void">
       <HeroSequence 
         frameCount={162} 
-        baseUrl="/images/hero-sequence" 
+        baseUrl="images/hero-sequence" 
         extension="webp" 
       >
         <div className="noise-overlay"></div>
