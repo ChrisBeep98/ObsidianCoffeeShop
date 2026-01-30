@@ -85,9 +85,11 @@ export default function TransmutationSection() {
           '>-0.5' // Empieza un poco antes de que termine el movimiento
         )
 
-        // 2. PARALLAX SUTIL (Solo en Y para no interferir con X)
+        // 2. PARALLAX SUTIL (Desactivado en Mobile para evitar saltos verticales)
+        const isMobile = window.innerWidth <= 768;
+        
         gsap.to(img, {
-          yPercent: 8,
+          yPercent: isMobile ? 0 : 8,
           ease: 'none',
           scrollTrigger: {
             trigger: item,

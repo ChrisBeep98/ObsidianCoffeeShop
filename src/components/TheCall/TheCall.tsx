@@ -63,7 +63,6 @@ export default function TheCall() {
       blocks.forEach((block: any) => {
         const imgWrap = block.querySelector(`.${styles.imageWrap}`);
         const img = block.querySelector(`.${styles.imageWrap} img`);
-        const tag = block.querySelector(`.${styles.tag}`);
         const serif = block.querySelector(`.${styles.serifThin}`);
         const sans = block.querySelector(`.${styles.sansBold}`);
         const label = block.querySelector(`.${styles.organicLabel}`);
@@ -82,9 +81,9 @@ export default function TheCall() {
           }
         });
 
-        masterTl
-          // Revelado de Imagen con Filtros Cinemáticos (Optimizado)
-          .fromTo(imgWrap, 
+        // Revelado de Imagen con Filtros Cinemáticos (Optimizado)
+        if (imgWrap) {
+          masterTl.fromTo(imgWrap, 
             { 
               clipPath: isReversed ? "inset(0% 100% 0% 0%)" : "inset(0% 0% 0% 100%)",
               filter: "brightness(0) contrast(1.5)"
@@ -96,18 +95,25 @@ export default function TheCall() {
               duration: 1 
             }, 0
           )
-          // Parallax de Imagen (Sincronizado con la duración del reveal)
-          .to(img, { yPercent: isMobile ? 5 : 20, ease: "none", duration: 1 }, 0)
-          // Animación de Texto (Sin Blurs y sin Y en mobile)
-          .fromTo(tag, { opacity: 0, x: isMobile ? 0 : -20 }, { opacity: 0.7, x: 0, duration: 0.3 }, 0.1)
-          .fromTo(serif, { opacity: 0, y: isMobile ? 0 : 30 }, { opacity: 1, y: 0, duration: 0.4 }, 0.2)
-          .fromTo(sans, { opacity: 0, y: isMobile ? 0 : 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.25)
-          .fromTo([line, label], { opacity: 0, x: isMobile ? 0 : -20 }, { opacity: 1, x: 0, duration: 0.3 }, 0.3)
-          .fromTo(desc, { opacity: 0, y: isMobile ? 0 : 15 }, { opacity: 0.6, y: 0, duration: 0.4 }, 0.35);
-
-        if (btn) {
-          masterTl.fromTo(btn, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3 }, 0.4);
         }
+
+        // Parallax de Imagen (Sincronizado con la duración del reveal - Desactivado en Mobile)
+        if (img) {
+          masterTl.fromTo(img, 
+            { yPercent: isMobile ? 0 : -15 }, 
+            { yPercent: isMobile ? 0 : 15, ease: "none", duration: 1 }, 0
+          )
+        }
+
+        // Animación de Texto (Solo si los elementos existen)
+        if (serif) masterTl.fromTo(serif, { opacity: 0, y: isMobile ? 0 : 30 }, { opacity: 1, y: 0, duration: 0.4 }, 0.2);
+        if (sans) masterTl.fromTo(sans, { opacity: 0, y: isMobile ? 0 : 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.25);
+        if (line || label) {
+          const targets = [line, label].filter(Boolean);
+          masterTl.fromTo(targets, { opacity: 0, x: isMobile ? 0 : -20 }, { opacity: 1, x: 0, duration: 0.3 }, 0.3);
+        }
+        if (desc) masterTl.fromTo(desc, { opacity: 0, y: isMobile ? 0 : 15 }, { opacity: 0.6, y: 0, duration: 0.4 }, 0.35);
+        if (btn) masterTl.fromTo(btn, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3 }, 0.4);
       });
 
       return () => {
