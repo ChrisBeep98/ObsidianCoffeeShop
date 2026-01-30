@@ -139,7 +139,7 @@ export default function ProductShowcase() {
         <div className="col-span-12 md:col-span-6 flex justify-center perspective-[1200px]">
           <div 
             ref={imageContainerRef} 
-            className="relative w-full max-w-lg aspect-[4/5] group md:translate-x-16"
+            className="relative w-full max-w-lg aspect-[4/5] group md:translate-x-24"
           >
             <img 
               src="https://res.cloudinary.com/dnx0dmhq3/image/upload/v1769745585/Frame_1000004272_lzksxb.png" 
@@ -148,22 +148,22 @@ export default function ProductShowcase() {
             />
 
             {/* DECORATIVE MINI TAGS */}
-            <div className="absolute top-[10%] -left-8 md:-left-16 flex items-center gap-3 transition-all duration-700">
-              <span className="font-serif italic text-[11px] md:text-xs text-void/60 tracking-wider whitespace-nowrap">Origen Volcánico</span>
+            <div className="absolute top-[0%] -left-8 md:-left-16 flex items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider whitespace-nowrap">Origen Volcánico</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
-            <div className="absolute top-[38%] -right-8 md:-right-20 flex flex-row-reverse items-center gap-3 transition-all duration-700">
-              <span className="font-serif italic text-[11px] md:text-xs text-void/60 tracking-wider whitespace-nowrap">Tostado Lento</span>
+            <div className="absolute top-[25%] -right-8 md:-right-20 flex flex-row-reverse items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider whitespace-nowrap">Tostado Lento</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
-            <div className="absolute bottom-[32%] -left-6 md:-left-12 flex items-center gap-3 transition-all duration-700">
-              <span className="font-serif italic text-[11px] md:text-xs text-void/60 tracking-wider whitespace-nowrap">Esencia Pura</span>
+            <div className="absolute bottom-[45%] -left-6 md:-left-12 flex items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider whitespace-nowrap">Esencia Pura</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
