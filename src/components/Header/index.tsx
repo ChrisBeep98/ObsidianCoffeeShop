@@ -25,16 +25,44 @@ const ObsidianPillar = () => (
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      // Control de "scrolled" para el alto del header
+      setScrolled(currentScrollY > 50)
+
+      // Lógica de Smart Sticky:
+      // 1. Siempre mostrar si estamos muy arriba
+      if (currentScrollY < 100) {
+        setIsVisible(true)
+      } 
+      // 2. Si bajamos, ocultar. Si subimos, mostrar.
+      else if (currentScrollY > lastScrollY) {
+        setIsVisible(false)
+      } else {
+        setIsVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   return (
     <>
-      <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-700 px-frame flex items-center ${scrolled ? 'h-[80px]' : 'h-[84px] md:h-[92px]'} bg-transparent`}>
+      <header 
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 px-frame flex items-center ${
+          scrolled ? 'h-[80px]' : 'h-[84px] md:h-[92px]'
+        } bg-transparent ${
+          isVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+      >
         <div className="w-full max-w-[1800px] mx-auto grid grid-cols-2 md:grid-cols-4 items-center h-full mix-blend-difference">
           
           {/* LEFT: Branding & Pillar */}
