@@ -139,12 +139,12 @@ export default function ProductShowcase() {
         <div className="col-span-12 md:col-span-6 flex justify-center perspective-[1200px]">
           <div 
             ref={imageContainerRef} 
-            className="relative w-full max-w-lg aspect-[4/5] bg-void group shadow-[0_80px_160px_rgba(0,0,0,0.4)]"
+            className="relative w-full max-w-lg aspect-[4/5] group"
           >
             <img 
-              src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=2070&auto=format&fit=crop" 
+              src="https://res.cloudinary.com/dnx0dmhq3/image/upload/v1769745585/Frame_1000004272_lzksxb.png" 
               alt="Obsidian Ritual Special Reserve" 
-              className="w-full h-full object-cover grayscale-[0.2] transition-all duration-1000 hover:grayscale-0 scale-105 group-hover:scale-100"
+              className="w-full h-full object-contain transition-all duration-1000 hover:grayscale-0 scale-105 group-hover:scale-110 drop-shadow-[0_35px_60px_rgba(0,0,0,0.5)]"
             />
             
             {/* PRICE TAG (Liquid Glass - Unified Style) */}
@@ -155,8 +155,6 @@ export default function ProductShowcase() {
               </svg>
               <span className="text-void font-serif text-4xl font-bold tracking-tight">$48.00</span>
             </div>
-
-            <div className="absolute inset-0 border-[20px] border-void/10 pointer-events-none"></div>
             
             {/* LOT TAG (Unified Style) */}
             <div className="absolute -bottom-12 -left-12 w-36 h-36 border border-void/10 flex items-center justify-center backdrop-blur-xl bg-white/10 z-20 shadow-xl transition-all duration-700 group-hover:bg-white/20">

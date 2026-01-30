@@ -73,11 +73,14 @@ export default function Home() {
     return () => ctx.revert()
   }, [])
 
+  const isProd = process.env.NODE_ENV === 'production'
+  const heroBaseUrl = isProd ? 'images/hero-sequence' : '/images/hero-sequence'
+
   return (
     <main ref={containerRef} className="min-h-screen bg-void selection:bg-gold selection:text-void">
       <HeroSequence 
         frameCount={162} 
-        baseUrl="images/hero-sequence" 
+        baseUrl={heroBaseUrl} 
         extension="webp" 
       >
         <div className="noise-overlay"></div>
