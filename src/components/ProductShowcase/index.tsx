@@ -157,22 +157,22 @@ export default function ProductShowcase() {
             />
 
             {/* DECORATIVE MINI TAGS */}
-            <div className="absolute top-[0%] -left-8 md:-left-16 flex items-center gap-3 transition-all duration-700">
-              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider whitespace-nowrap">Origen Volcánico</span>
+            <div className="absolute top-[0%] -left-2 md:-left-16 flex items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider leading-tight">Origen <br className="md:hidden" /> Volcánico</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
-            <div className="absolute top-[25%] -right-8 md:-right-20 flex flex-row-reverse items-center gap-3 transition-all duration-700">
-              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider whitespace-nowrap">Tostado Lento</span>
+            <div className="absolute top-[25%] right-0 md:-right-20 flex flex-row-reverse items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider leading-tight text-right">Tostado <br className="md:hidden" /> Lento</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
-            <div className="absolute bottom-[45%] -left-6 md:-left-12 flex items-center gap-3 transition-all duration-700">
-              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider whitespace-nowrap">Esencia Pura</span>
+            <div className="absolute bottom-[45%] left-0 md:-left-12 flex items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider leading-tight">Esencia <br className="md:hidden" /> Pura</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
