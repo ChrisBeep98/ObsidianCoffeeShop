@@ -133,10 +133,19 @@ export default function ProductShowcase() {
         </span>
       </div>
 
-      <div ref={containerRef} className="container mx-auto grid grid-cols-12 gap-y-16 md:gap-y-0 items-center relative z-10">
+      <div ref={containerRef} className="container mx-auto grid grid-cols-12 gap-y-12 md:gap-y-0 items-center relative z-10">
         
-        {/* LEFT: THE ARTIFACT */}
-        <div className="col-span-12 md:col-span-6 flex justify-center perspective-[1200px]">
+        {/* 1. TITLE (Mobile: Order 1 | Desktop: Order 2) */}
+        <div className="col-span-12 md:col-start-8 md:col-span-5 order-1 md:order-2 mb-8 md:mb-10">
+          <div className="flex flex-col gap-6">
+            <h2 className="ignite-text text-void text-hero md:text-[9.5rem] leading-[0.8] tracking-tightest font-bold">
+              Oro <br /> <span className="">Líquido</span>
+            </h2>
+          </div>
+        </div>
+
+        {/* 2. ARTIFACT (Mobile: Order 2 | Desktop: Order 1) */}
+        <div className="col-span-12 md:col-span-6 md:row-span-2 flex justify-center perspective-[1200px] order-2 md:order-1">
           <div 
             ref={imageContainerRef} 
             className="relative w-full max-w-lg aspect-[4/5] group md:translate-x-24"
@@ -178,15 +187,8 @@ export default function ProductShowcase() {
           </div>
         </div>
 
-        {/* RIGHT: THE MANIFESTO */}
-        <div className="col-span-12 md:col-start-8 md:col-span-5 flex flex-col gap-10 md:gap-14">
-          
-          <div className="flex flex-col gap-6">
-            <h2 className="ignite-text text-void text-hero md:text-[9.5rem] leading-[0.8] tracking-tightest font-bold">
-              Oro <br /> <span className="">Líquido</span>
-            </h2>
-          </div>
-
+        {/* 3. MANIFESTO CONTENT (Mobile: Order 3 | Desktop: Order 3) */}
+        <div className="col-span-12 md:col-start-8 md:col-span-5 flex flex-col gap-10 md:gap-14 order-3 md:order-3 mt-12 md:mt-0">
           <div className="flex flex-col gap-8">
             <p className="ignite-text text-void/85 font-sans text-base md:text-2xl font-medium leading-snug tracking-wide pl-0">
               No es una bebida, es un cambio de estado. La esencia del grano volcánico liberada mediante precisión alquímica. Notas de cacao profundo, cereza negra y el eco de la tierra madre.
