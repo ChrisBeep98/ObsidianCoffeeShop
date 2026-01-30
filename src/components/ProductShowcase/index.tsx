@@ -144,23 +144,28 @@ export default function ProductShowcase() {
             <img 
               src="https://res.cloudinary.com/dnx0dmhq3/image/upload/v1769745585/Frame_1000004272_lzksxb.png" 
               alt="Obsidian Ritual Special Reserve" 
-              className="w-full h-full object-contain transition-all duration-1000 hover:grayscale-0 scale-105 group-hover:scale-110 drop-shadow-[0_35px_60px_rgba(0,0,0,0.5)]"
+              className="w-full h-full object-contain transition-all duration-1000 scale-105 group-hover:scale-110 drop-shadow-[0_35px_60px_rgba(0,0,0,0.5)]"
             />
-            
-            {/* PRICE TAG (Liquid Glass - Unified Style) */}
-            <div className="absolute -top-10 -right-12 z-20 backdrop-blur-xl bg-white/10 border border-void/10 px-8 py-5 shadow-2xl transition-all duration-700 group-hover:bg-white/20 flex items-center gap-5">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2H2V12L9.29 19.29C10.2275 20.2275 11.7725 20.2275 12.71 19.29L19.29 12.71C20.2275 11.7725 20.2275 10.2275 19.29 9.29L12 2Z" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <circle cx="7" cy="7" r="1" fill="#0A0A0A" stroke="none"/>
-              </svg>
-              <span className="text-void font-serif text-4xl font-bold tracking-tight">$48.00</span>
+
+            {/* DECORATIVE MINI TAGS */}
+            <div className="absolute top-[10%] -left-8 md:-left-16 flex items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[11px] md:text-xs text-void/60 tracking-wider whitespace-nowrap">Origen Volcánico</span>
+              <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
+              </div>
             </div>
-            
-            {/* LOT TAG (Unified Style) */}
-            <div className="absolute -bottom-12 -left-12 w-36 h-36 border border-void/10 flex items-center justify-center backdrop-blur-xl bg-white/10 z-20 shadow-xl transition-all duration-700 group-hover:bg-white/20">
-              <div className="text-center">
-                <span className="block text-[11px] text-void font-bold tracking-[0.4em] uppercase mb-1">Lot.</span>
-                <span className="text-3xl font-serif text-void font-bold">#082</span>
+
+            <div className="absolute top-[38%] -right-8 md:-right-20 flex flex-row-reverse items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[11px] md:text-xs text-void/60 tracking-wider whitespace-nowrap">Tostado Lento</span>
+              <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
+              </div>
+            </div>
+
+            <div className="absolute bottom-[32%] -left-6 md:-left-12 flex items-center gap-3 transition-all duration-700">
+              <span className="font-serif italic text-[11px] md:text-xs text-void/60 tracking-wider whitespace-nowrap">Esencia Pura</span>
+              <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
