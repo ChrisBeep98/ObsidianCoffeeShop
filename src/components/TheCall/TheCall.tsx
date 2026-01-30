@@ -58,6 +58,8 @@ export default function TheCall() {
 
       // 2. REVELADO CONSOLIDADO (SIN BLUR)
       const blocks = gsap.utils.toArray(`.${styles.storyBlock}`);
+      const isMobile = window.innerWidth <= 768;
+
       blocks.forEach((block: any) => {
         const imgWrap = block.querySelector(`.${styles.imageWrap}`);
         const img = block.querySelector(`.${styles.imageWrap} img`);
@@ -74,34 +76,34 @@ export default function TheCall() {
         const masterTl = gsap.timeline({
           scrollTrigger: {
             trigger: block,
-            start: "top 90%",
-            end: "bottom 20%",
-            scrub: 1,
+            start: "top 100%", 
+            end: "top 20%",
+            scrub: 0.5,
           }
         });
 
         masterTl
-          // Revelado de Imagen con Filtros Cinemáticos (Restaurados)
+          // Revelado de Imagen con Filtros Cinemáticos (Optimizado)
           .fromTo(imgWrap, 
             { 
               clipPath: isReversed ? "inset(0% 100% 0% 0%)" : "inset(0% 0% 0% 100%)",
-              filter: "brightness(0) contrast(2)"
+              filter: "brightness(0) contrast(1.5)"
             },
             { 
               clipPath: "inset(0% 0% 0% 0%)", 
               filter: "brightness(0.9) contrast(1.1)",
-              ease: "none", 
+              ease: "power1.inOut", 
               duration: 1 
             }, 0
           )
-          // Parallax de Imagen
-          .to(img, { yPercent: 20, ease: "none", duration: 1 }, 0)
-          // Animación de Texto (Sin Blurs)
-          .fromTo(tag, { opacity: 0, x: -20 }, { opacity: 0.7, x: 0, duration: 0.3 }, 0.1)
-          .fromTo(serif, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4 }, 0.2)
-          .fromTo(sans, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.25)
-          .fromTo([line, label], { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.3 }, 0.3)
-          .fromTo(desc, { opacity: 0, y: 15 }, { opacity: 0.6, y: 0, duration: 0.4 }, 0.35);
+          // Parallax de Imagen (Sincronizado con la duración del reveal)
+          .to(img, { yPercent: isMobile ? 5 : 20, ease: "none", duration: 1 }, 0)
+          // Animación de Texto (Sin Blurs y sin Y en mobile)
+          .fromTo(tag, { opacity: 0, x: isMobile ? 0 : -20 }, { opacity: 0.7, x: 0, duration: 0.3 }, 0.1)
+          .fromTo(serif, { opacity: 0, y: isMobile ? 0 : 30 }, { opacity: 1, y: 0, duration: 0.4 }, 0.2)
+          .fromTo(sans, { opacity: 0, y: isMobile ? 0 : 20 }, { opacity: 1, y: 0, duration: 0.4 }, 0.25)
+          .fromTo([line, label], { opacity: 0, x: isMobile ? 0 : -20 }, { opacity: 1, x: 0, duration: 0.3 }, 0.3)
+          .fromTo(desc, { opacity: 0, y: isMobile ? 0 : 15 }, { opacity: 0.6, y: 0, duration: 0.4 }, 0.35);
 
         if (btn) {
           masterTl.fromTo(btn, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3 }, 0.4);
