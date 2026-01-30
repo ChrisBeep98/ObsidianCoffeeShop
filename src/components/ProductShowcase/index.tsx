@@ -123,13 +123,13 @@ export default function ProductShowcase() {
       {/* BACKGROUND TEXT */}
       <div ref={bgTextLeftRef} className="absolute top-0 left-4 md:left-12 opacity-[0.08] pointer-events-none select-none [writing-mode:vertical-rl] [text-orientation:mixed]">
         <span className="text-void font-mono text-[100px] md:text-[200px] font-black uppercase tracking-tighter whitespace-nowrap">
-          PRECISION / MYSTERY
+          PRECISION <span className="hidden md:inline">/ MYSTERY</span>
         </span>
       </div>
       
       <div ref={bgTextRightRef} className="absolute bottom-0 right-4 md:right-12 opacity-[0.08] pointer-events-none select-none [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180">
         <span className="text-void font-mono text-[100px] md:text-[200px] font-black uppercase tracking-tighter whitespace-nowrap">
-          ALCHEMICAL / EXTRACTION
+          ALCHEMICAL <span className="hidden md:inline">/ EXTRACTION</span>
         </span>
       </div>
 
