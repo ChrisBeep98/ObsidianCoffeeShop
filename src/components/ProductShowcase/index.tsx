@@ -51,22 +51,46 @@ export default function ProductShowcase() {
         }
       })
 
-      // 3. PRODUCT IMAGE ENTRANCE
-      gsap.fromTo(imageContainerRef.current,
-        { y: 120, rotateY: -10, scale: 0.95, opacity: 0 },
+      // 3. ENTRANCE SEQUENCE (IMAGE + TAGS) - GPU OPTIMIZED
+      const entranceTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 40%',
+          toggleActions: 'play none none reverse'
+        }
+      })
+
+      entranceTl.fromTo(imageContainerRef.current,
+        { y: 100, rotateY: -10, scale: 0.85, opacity: 0 },
         {
           y: 0,
           rotateY: 0,
           scale: 1,
           opacity: 1,
           ease: 'expo.out',
-          duration: 2,
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 40%',
-          }
+          duration: 1.8,
+          delay: 0.2,
+          force3D: true
         }
       )
+
+      // Staggered Reveal for Mini Tags
+      const tags = imageContainerRef.current?.querySelectorAll('.decorative-tag')
+      if (tags) {
+        entranceTl.fromTo(tags,
+          { opacity: 0, x: (i) => (i % 2 === 0 ? -20 : 20), scale: 0.9 },
+          { 
+            opacity: 1, 
+            x: 0, 
+            scale: 1, 
+            duration: 1, 
+            stagger: 0.15, 
+            ease: 'power2.out',
+            force3D: true 
+          },
+          "-=1.8" // Start exactly when the image animation begins (0.2s)
+        )
+      }
 
       // 4. TYPOGRAPHY "IGNITION"
       const titles = gsap.utils.toArray('.ignite-text')
@@ -157,28 +181,28 @@ export default function ProductShowcase() {
             />
 
             {/* DECORATIVE MINI TAGS */}
-            <div className="absolute top-[0%] -left-2 md:-left-16 flex items-center gap-3 transition-all duration-700">
+            <div className="decorative-tag opacity-0 absolute top-[0%] -left-2 md:-left-16 flex items-center gap-3 transition-all duration-700">
               <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider leading-tight">Origen <br className="md:hidden" /> Volcánico</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
-            <div className="absolute top-[25%] right-0 md:-right-20 flex flex-row-reverse items-center gap-3 transition-all duration-700">
+            <div className="decorative-tag opacity-0 absolute top-[25%] right-0 md:-right-20 flex flex-row-reverse items-center gap-3 transition-all duration-700">
               <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider leading-tight text-right">Tostado <br className="md:hidden" /> Lento</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
-            <div className="absolute bottom-[45%] left-0 md:-left-12 flex items-center gap-3 transition-all duration-700">
+            <div className="decorative-tag opacity-0 absolute bottom-[45%] left-0 md:-left-12 flex items-center gap-3 transition-all duration-700">
               <span className="font-serif italic text-[13px] md:text-[14px] text-void/60 tracking-wider leading-tight">Esencia <br className="md:hidden" /> Pura</span>
               <div className="w-8 md:w-12 h-[1px] bg-void/30 relative">
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-1 bg-void/40 rotate-45"></div>
               </div>
             </div>
 
-            <div className="absolute bottom-8 right-8">
+            <div className="decorative-tag opacity-0 absolute bottom-8 right-8">
               <div className="flex flex-col items-end gap-2">
                 <div className="h-[1px] bg-void/40 w-32"></div>
                 <span className="text-[9px] text-void font-bold tracking-[0.5em] uppercase font-sans">Limited Reserve // 2026</span>
