@@ -1,0 +1,331 @@
+.verticalAbyss {
+  position: relative;
+  width: 100%;
+  padding: 20vh 0;
+  background-color: var(--color-void);
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* EJE CENTRAL */
+.centerAxis {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  z-index: 1;
+}
+
+.lifeLine {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-gold);
+  transform-origin: top;
+  box-shadow: 0 0 15px var(--color-gold);
+  opacity: 0.6;
+  will-change: transform;
+}
+
+.beanHead {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 42px;
+  height: 42px;
+  transform: translate(-50%, -50%);
+  color: var(--color-gold);
+  filter: drop-shadow(0 0 12px rgba(201, 162, 39, 0.6));
+  z-index: 5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.storyContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+/* BLOQUE DE HISTORIA (ASIMÉTRICO Y FULL-EDGE) */
+.storyBlock {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20vh;
+}
+
+.storyBlock:last-child {
+  margin-bottom: 0;
+}
+
+.reversed {
+  flex-direction: row-reverse;
+}
+
+.contentSide {
+  flex: 1;
+  padding: 0 10vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.visualSide {
+  flex: 1.2; /* Slightly larger for the image */
+  height: 80vh;
+  position: relative;
+}
+
+.tag {
+  display: block;
+  font-family: var(--font-urbanist);
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  color: var(--color-gold);
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+
+/* PRECISE EDITORIAL HEADER */
+.editorialHeader {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.serifThin {
+  font-family: var(--font-cormorant);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--color-bone);
+  opacity: 0.9;
+  text-transform: none;
+  will-change: transform, opacity, filter;
+}
+
+.sansBold {
+  font-family: var(--font-urbanist);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: var(--color-gold);
+  letter-spacing: -0.02em;
+  will-change: transform, opacity, filter;
+}
+
+.subtitleLine {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  will-change: transform, opacity, filter;
+}
+
+.goldLine {
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-gold);
+  opacity: 0.3;
+}
+
+.iconWrap {
+  width: 28px;
+  height: 28px;
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.organicLabel {
+  font-family: var(--font-cormorant);
+  font-size: 1.75rem;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(245, 245, 240, 0.5);
+  text-transform: none;
+  will-change: transform, opacity, filter;
+}
+
+.desc {
+  font-family: var(--font-urbanist);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(245, 245, 240, 0.6);
+  letter-spacing: 0.03em;
+  max-width: 500px;
+  margin-top: 1rem;
+  will-change: transform, opacity, filter;
+}
+
+/* IMAGEN CON PARALLAX (FULL EDGE) */
+.imageWrap {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  will-change: clip-path, filter;
+}
+
+.storyBlock:not(.reversed) .imageWrap {
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.reversed .imageWrap {
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 130%; /* Extra height for more dramatic parallax */
+  object-fit: cover;
+  filter: contrast(1.1) brightness(0.65) saturate(0.15);
+}
+
+/* AMBIENTE */
+.vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 30%, black 140%);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 21;
+}
+
+@media (max-width: 1024px) {
+  .storyBlock { flex-direction: column !important; gap: 4rem; }
+  .contentSide { max-width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .verticalAbyss {
+    padding: 5vh 0;
+  }
+
+  /* EJE FLOTANTE EN MOBILE (AJUSTADO A 14PX) */
+  .centerAxis {
+    left: 20px; /* 14px de margen + 6px para centrar el grano sutilmente */
+    opacity: 0.4;
+  }
+
+  .beanHead {
+    left: 20px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .storyBlock {
+    height: 90vh; 
+    margin-bottom: 5vh;
+    display: block;
+    position: relative;
+  }
+
+  .visualSide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .imageWrap {
+    height: 100%;
+    border: none !important;
+  }
+
+  .imageWrap img {
+    height: 110%;
+    filter: brightness(0.4) contrast(1.2); 
+  }
+
+  .contentSide {
+    position: absolute;
+    bottom: 5vh;
+    left: 40px; /* Alineado a la nueva posición de la línea */
+    right: 14px;
+    z-index: 10;
+    padding: 0 !important;
+    background: none;
+    backdrop-filter: none;
+    border: none;
+    max-width: none;
+    text-align: left;
+  }
+
+  /* Gradiente sutil para legibilidad de texto sobre imagen */
+  .storyBlock::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-void) 0%, transparent 40%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* AJUSTE TIPOGRÁFICO MINIMAL */
+  .sigConcept {
+    font-size: 3rem;
+    line-height: 0.85;
+    letter-spacing: -0.02em;
+  }
+
+  .sigData {
+    font-size: 0.9rem;
+    position: static;
+    background: none;
+    padding: 0;
+    border: none;
+    color: var(--color-gold);
+    display: block;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+  }
+
+  .sigBody {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+
+  .sigLine {
+    width: 20px; /* Línea reducida */
+    opacity: 0.2;
+  }
+
+  .sigPoetry {
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  .desc {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    color: rgba(245, 245, 240, 0.4);
+    max-width: 90%;
+    line-height: 1.4;
+  }
+
+  .reversed .contentSide {
+    left: 40px;
+    right: 14px;
+  }
+}

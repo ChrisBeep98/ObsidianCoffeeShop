@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeroSequence from '@/components/HeroSequence'
 import TransmutationSection from '@/components/TransmutationSection'
 import ProductShowcase from '@/components/ProductShowcase'
+import TheCall from '@/components/TheCall/TheCall'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -140,11 +141,14 @@ export default function Home() {
 
       {/* ACT II: The Transmutation Triptych */}
       <div className="relative z-20 bg-void">
+       <TheCall />
+
+       
+      {/* ACT III: The Liquid Gold Product Showcase */}
+      <ProductShowcase />
         <TransmutationSection />
       </div>
 
-      {/* ACT III: The Liquid Gold Product Showcase */}
-      <ProductShowcase />
 
       {/* Content Sections */}
       <div className="relative z-20 bg-void px-frame py-section">
