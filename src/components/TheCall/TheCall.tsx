@@ -143,20 +143,20 @@ export default function TheCall() {
 
       <div className={styles.storyContainer}>
         
-        {/* BLOQUE 1: LA CIMA (AIRE) */}
+        {/* BLOQUE 1: EL ORIGEN */}
         <div className={styles.storyBlock}>
           <div className={styles.contentSide}>
-            <div className={styles.editorialHeader}>
-              <h2 className={styles.mainTitle}>
-                <span className={styles.serifThin}>Altitud</span>
-                <span className={styles.sansBold}>1,800M</span>
-              </h2>
-              <div className={styles.subtitleLine}>
-                <div className={styles.goldLine}></div>
-                <span className={styles.organicLabel}>El aliento de las alturas.</span>
-              </div>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="font-mono text-xs text-gold/80 tracking-[0.5em] font-bold">01</span>
+              <div className="h-[1px] w-10 bg-gold/30" />
+              <span className="font-sans text-xs text-bone/40 tracking-[0.4em] uppercase font-bold">El Origen</span>
             </div>
-            <p className={styles.desc}>En la cúspide de Sidamo, la niebla protege el grano del sol directo, permitiendo una maduración lenta que concentra los azúcares más complejos.</p>
+            <h2 className="font-serif font-bold text-3xl md:text-7xl text-bone mb-6 leading-[0.9] tracking-tight uppercase">
+              Café de <span className="text-gold italic md:block">Altura</span>
+            </h2>
+            <p className="text-bone/60 text-base md:text-xl font-sans leading-relaxed lowercase italic border-l-2 border-gold/30 pl-6 md:pl-10">
+              Cultivamos nuestros granos a 1,850 metros sobre el nivel del mar, donde el clima y la altitud garantizan una maduración lenta y un sabor superior.
+            </p>
           </div>
           <div className={styles.visualSide}>
             <div className={styles.imageWrap}>
@@ -165,20 +165,20 @@ export default function TheCall() {
           </div>
         </div>
 
-        {/* BLOQUE 2: LA TIERRA (MATERIA) */}
+        {/* BLOQUE 2: EL TOSTADO */}
         <div className={`${styles.storyBlock} ${styles.reversed}`}>
           <div className={styles.contentSide}>
-            <div className={styles.editorialHeader}>
-              <h2 className={styles.mainTitle}>
-                <span className={styles.serifThin}>Suelo</span>
-                <span className={styles.sansBold}>VOLCÁNICO</span>
-              </h2>
-              <div className={styles.subtitleLine}>
-                <div className={styles.goldLine}></div>
-                <span className={styles.organicLabel}>Herencia de fuego y ceniza.</span>
-              </div>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="font-mono text-xs text-gold/80 tracking-[0.5em] font-bold">02</span>
+              <div className="h-[1px] w-10 bg-gold/30" />
+              <span className="font-sans text-xs text-bone/40 tracking-[0.4em] uppercase font-bold">El Tostado</span>
             </div>
-            <p className={styles.desc}>Crecido en ceniza volcánica pura. Un suelo rico en minerales que otorga esa nota metálica y profunda exclusiva de nuestra cosecha.</p>
+            <h2 className="font-serif font-bold text-3xl md:text-7xl text-bone mb-6 leading-[0.9] tracking-tight uppercase">
+              Toste de <span className="text-gold italic md:block">Precisión</span>
+            </h2>
+            <p className="text-bone/60 text-base md:text-xl font-sans leading-relaxed lowercase italic border-l-2 border-gold/30 pl-6 md:pl-10">
+              Controlamos la temperatura grado a grado mediante tostadores de aire fluido, resaltando las notas naturales de cada cosecha sin comprometer su pureza.
+            </p>
           </div>
           <div className={styles.visualSide}>
             <div className={styles.imageWrap}>
@@ -187,23 +187,20 @@ export default function TheCall() {
           </div>
         </div>
 
-        {/* BLOQUE 3: EL CRITERIO (HUMANO) */}
+        {/* BLOQUE 3: LA EXTRACCIÓN */}
         <div className={styles.storyBlock}>
           <div className={styles.contentSide}>
-            <div className={styles.editorialHeader}>
-              <h2 className={styles.mainTitle}>
-                <span className={styles.serifThin}>Cosecha</span>
-                <span className={styles.sansBold}>MANUAL</span>
-              </h2>
-              <div className={styles.subtitleLine}>
-                <div className={styles.goldLine}></div>
-                <span className={styles.organicLabel}>El ritual de la paciencia.</span>
-              </div>
+            <div className="flex items-center gap-4 mb-8">
+              <span className="font-mono text-xs text-gold/80 tracking-[0.5em] font-bold">03</span>
+              <div className="h-[1px] w-10 bg-gold/30" />
+              <span className="font-sans text-xs text-bone/40 tracking-[0.4em] uppercase font-bold">La Extracción</span>
             </div>
-            <p className={styles.desc}>Cada grano es recolectado a mano en el punto exacto de madurez. Solo el 4% de la cosecha total califica para el sello Obsidian.</p>
-            <div className="mt-12">
-               <button className="btn-ritual">Ver el Resultado Final</button>
-            </div>
+            <h2 className="font-serif font-bold text-3xl md:text-7xl text-bone mb-6 leading-[0.9] tracking-tight uppercase">
+              Espresso <span className="text-gold italic md:block">Perfecto</span>
+            </h2>
+            <p className="text-bone/60 text-base md:text-xl font-sans leading-relaxed lowercase italic border-l-2 border-gold/30 pl-6 md:pl-10">
+              Utilizamos 9 bares de presión constante para extraer la máxima concentración de sabor y una crema densa en cada taza.
+            </p>
           </div>
           <div className={styles.visualSide}>
             <div className={styles.imageWrap}>
