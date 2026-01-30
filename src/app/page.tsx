@@ -141,30 +141,10 @@ export default function Home() {
 
       {/* ACT II: The Transmutation Triptych */}
       <div className="relative z-20 bg-void">
-       <TheCall />
+        <TheCall />
 
-       
-      {/* ACT III: The Liquid Gold Product Showcase */}
-      <ProductShowcase />
-        <TransmutationSection />
-      </div>
-
-
-      {/* Content Sections */}
-      <div className="relative z-20 bg-void px-frame py-section">
-          <div className="grid grid-cols-12 w-full gap-y-20">
-            <div className="col-span-12 md:col-span-6">
-              <span className="text-label mb-8 block">// El Manifiesto</span>
-              <h2 className="text-hero text-6xl md:text-8xl lg:text-9xl leading-none">
-                La Alquimia <br/> <span className="text-gold">de lo Puro</span>
-              </h2>
-            </div>
-            <div className="col-span-12 md:col-start-7 md:col-span-5 self-end">
-              <p className="text-body border-l border-gold/20 pl-8 opacity-40">
-                Cada experiencia de alta gama debe tener un arco narrativo. Participamos en un ritual antiguo donde la precisión se encuentra con el misterio de la tierra. No es solo café; es una transición de estado, un momento donde el tiempo se detiene para revelar la esencia del grano.
-              </p>
-            </div>
-          </div>
+        {/* ACT III: The Liquid Gold Product Showcase */}
+        <ProductShowcase />
       </div>
     </main>
   )
