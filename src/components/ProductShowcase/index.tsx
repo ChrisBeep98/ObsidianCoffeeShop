@@ -121,13 +121,13 @@ export default function ProductShowcase() {
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none mix-blend-multiply bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
 
       {/* BACKGROUND TEXT */}
-      <div ref={bgTextLeftRef} className="absolute top-0 left-4 md:left-12 opacity-[0.08] pointer-events-none select-none vertical-text">
+      <div ref={bgTextLeftRef} className="absolute top-0 left-4 md:left-12 opacity-[0.08] pointer-events-none select-none [writing-mode:vertical-rl] [text-orientation:mixed]">
         <span className="text-void font-mono text-[100px] md:text-[200px] font-black uppercase tracking-tighter whitespace-nowrap">
           PRECISION / MYSTERY
         </span>
       </div>
       
-      <div ref={bgTextRightRef} className="absolute bottom-0 right-4 md:right-12 opacity-[0.08] pointer-events-none select-none vertical-text rotate-180">
+      <div ref={bgTextRightRef} className="absolute bottom-0 right-4 md:right-12 opacity-[0.08] pointer-events-none select-none [writing-mode:vertical-rl] [text-orientation:mixed] rotate-180">
         <span className="text-void font-mono text-[100px] md:text-[200px] font-black uppercase tracking-tighter whitespace-nowrap">
           ALCHEMICAL / EXTRACTION
         </span>
@@ -139,7 +139,7 @@ export default function ProductShowcase() {
         <div className="col-span-12 md:col-span-6 flex justify-center perspective-[1200px]">
           <div 
             ref={imageContainerRef} 
-            className="relative w-full max-w-lg aspect-[4/5] group"
+            className="relative w-full max-w-lg aspect-[4/5] group md:translate-x-16"
           >
             <img 
               src="https://res.cloudinary.com/dnx0dmhq3/image/upload/v1769745585/Frame_1000004272_lzksxb.png" 
@@ -213,13 +213,6 @@ export default function ProductShowcase() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .vertical-text {
-          writing-mode: vertical-rl;
-          text-orientation: mixed;
-        }
-      `}</style>
     </section>
   )
 }
