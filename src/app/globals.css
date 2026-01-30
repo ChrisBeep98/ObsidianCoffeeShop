@@ -72,6 +72,7 @@
     background: radial-gradient(circle, transparent 10%, rgba(0,0,0,0.95) 100%);
   }
 
+
   /* BOTÓN RITUAL V3 - CINEMÁTICO */
   .btn-ritual {
     @apply relative px-12 py-5 border border-gold/50 text-gold font-sans text-[11px] uppercase tracking-[0.4em] transition-all duration-500 overflow-hidden cursor-pointer inline-flex items-center justify-center gap-4;

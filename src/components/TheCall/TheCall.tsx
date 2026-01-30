@@ -210,9 +210,6 @@ export default function TheCall() {
         </div>
 
       </div>
-
-      <div className={styles.vignette}></div>
-      <div className={styles.grain}></div>
     </section>
   );
 }

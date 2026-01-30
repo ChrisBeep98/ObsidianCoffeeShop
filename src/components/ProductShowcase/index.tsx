@@ -209,8 +209,8 @@ export default function ProductShowcase() {
           </div>
 
           <div className="ignite-text pt-4">
-            <button className="btn-gravitational group relative inline-flex items-center gap-8 px-16 py-8 border-2 border-void text-void font-sans text-xs uppercase tracking-[0.6em] overflow-hidden transition-all duration-500 hover:bg-void hover:text-gold">
-              <span className="relative z-10 font-bold">Reclamar Legado</span>
+            <button className="btn-gravitational group relative inline-flex items-center gap-8 px-8 md:px-16 h-[60px] md:h-auto md:py-8 border-2 border-void text-void font-sans text-xs uppercase tracking-[0.6em] overflow-hidden transition-all duration-500 hover:bg-void hover:text-gold">
+              <span className="relative z-10 font-bold">Reservar Cosecha</span>
               <svg width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10 transition-transform duration-500 group-hover:translate-x-3">
                 <path d="M17 1L23 7L17 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M1 7H23" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
